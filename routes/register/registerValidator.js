@@ -1,4 +1,3 @@
-//made the controller for hashing and verify
 const express = require('express')
 const router = express.Router()
 const verificator = require('./../../utils/middlewares/verficationRegisterApi')

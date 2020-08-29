@@ -25,6 +25,9 @@ $(document).ready(function() {
         let {userName,password,passwordConfirm} = obj
         const regexUserName = /(\w+[@!#$%&?¡¿]?)/
         const regexPassword = /([a-zA-Z]+[\d]+[@!#$%&?¡¿]+)/
+        if(userName === '' || password === ''|| passwordConfirm === ''){
+            console.log('vacios')
+        }
         if(regexUserName.test(userName) && (userName.length >=3 && userName.length <=20)){
             if(regexPassword.test(password) && (password.length >=12 && password.length <= 25)){
                 if(password === passwordConfirm){

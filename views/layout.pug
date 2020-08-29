@@ -10,10 +10,16 @@ html(lang="es")
             form(id="login")
                 input(type="text",id="user" name="user", placeholder="User")
                 input(type="password",id="password" name="pf",placeholder="Password")
-                input(type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
+                if title === "login"
+
+                else
+                    input(type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
                 button(type="submit" id="submit") Submit
 
         include footer.pug
         script(src="js/jquery.min.js")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
-        script(src="js/register.js")
+        if title === "login"
+            script(src="js/login.js")
+        else
+            script(src="js/register.js")
