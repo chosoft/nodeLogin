@@ -7,6 +7,7 @@ function verificator(obj){
         if(regexUserName.test(userName) && (userName.length >= 3 && userName.length <=20)){
             if(regexPassword.test(password) && (password.length >= 12 && password.length <=25)){
                 if(password === passwordConfirm){
+                    console.log(`[SERVER][VERIFICATOR-API]Successful`)
                     resolve('ok')
                 }else{
                     reject('passwords')

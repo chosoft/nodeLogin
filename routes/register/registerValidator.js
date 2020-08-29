@@ -10,6 +10,7 @@ router.get('/', (req,res,next)=>{
 router.post('/', (req,res,next)=>{
 
     verificator(req.body).then(res =>{
+        
         const salt = Math.floor(Math.random() * 10)
         hasher(salt,req.body).then(res => {
             console.log(res)
