@@ -22,7 +22,7 @@ function save(data){
         const user = new User(dataSend)
         user.save().then(res => {
             console.log(`[SERVER][DATABASE] Added user`)
-            resolve('save')
+            resolve('User Added')
         }).catch(err => reject(err))
     })
 }

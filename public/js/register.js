@@ -11,12 +11,12 @@ $(document).ready(function() {
         }
         if(registerValidation(data)){
             axios({
-                url: '/api/validator',
+                url: '/api/register',
                 method: 'POST',
                 data: data
-            }).then((ok,err) =>{
-                console.log(ok)
-            })
+            }).then((ok) =>{
+                console.log(ok.data)
+            }).catch(err =>console.log(err))
         }else{
             console.log('please check the inputs')
         }

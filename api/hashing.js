@@ -8,7 +8,6 @@ function hasher(saltRounds,obj){
         let arrayHashing = []
         try{
             for (let i = 0; i < arrayToHash.length; i++) {
-                console.log(arrayToHash[i])
                 bcrypt.genSalt(saltRounds,function(err,salt){
                     if(err){
                         reject(err)
