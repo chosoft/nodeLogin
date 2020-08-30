@@ -4,6 +4,8 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Login
+        link(rel="stylesheet", href="css/index.css")
+        link(href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet")
     body
         include header.pug
         main
@@ -14,7 +16,7 @@ html(lang="es")
 
                 else
                     input(type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
-                button(type="submit" id="submit") Submit
+                button(class="btn" type="submit" id="submit") Submit
 
         include footer.pug
         script(src="js/jquery.min.js")

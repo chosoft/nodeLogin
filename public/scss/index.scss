@@ -1,0 +1,113 @@
+$oxygen: 'Oxygen', sans-serif;
+
+@mixin btn($color,$size,$padding,$margin,$font,$font-size,$fontColor,$weight){
+    background: $color;
+    width: $size;
+    padding: $padding;
+    margin: $margin;
+    font-family: $font;
+    font-size: $font-size;
+    color: $fontColor;
+    border: 0;
+    border-radius: 12px;
+    transition: all .3s ease;
+    font-weight: $weight;
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.05);
+    }
+}
+@mixin input($fontColor,$fontFamily,$fontSize,$padding,$margin,$height,$width,$weight){
+    color: $fontColor;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    padding: $padding;
+    margin: $margin;
+    height: $height;
+    width: $width;
+    border: 2px solid gray;
+    outline: none;
+    border-radius: 12px;
+    transition: all .3s ease;
+    font-weight: $weight;
+
+    &:focus{
+        border-color: #4188FF;
+    }
+
+}
+@mixin title($type,$color,$fontFamily,$margin,$padding,$weight,$aling,$fontSize){
+    @if $type == 1{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 80px;
+        margin: $margin;
+        padding: $padding;
+        font-weight: $weight;
+        text-align: $aling;
+    }@else if $type == 2{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 75px;
+        margin: $margin;
+        padding: $padding;
+        font-weight: $weight;
+        text-align: $aling;
+    }@else if $type == 3{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 60px;
+        margin: $margin;
+        padding: $padding;
+        font-weight: $weight;
+        text-align: $aling;
+    }@else if $type == 4{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 50px;
+        margin: $margin;
+        text-align: $aling;
+        padding: $padding;
+    }@else if $type == 5{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 45px;
+        margin: $margin;
+        font-weight: $weight;
+        text-align: $aling;
+        padding: $padding;
+    }@else if $type == 6{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: 35px;
+        margin: $margin;
+        font-weight: $weight;
+        text-align: $aling;
+        padding: $padding;
+    }@else{
+        color: $color;
+        font-family:$fontFamily;
+        font-size: $fontSize;
+        margin: $margin;
+        padding: $padding;
+        font-weight: $weight;
+        text-align: $aling;
+    }
+}
+body{
+    background: url('../img/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+
+}
+.btn{
+    @include btn(#ff0000,10%,10px 20px,0,$oxygen,18px,#fff,bold)
+}
+h1{
+    @include title(5,#000,$oxygen,0,12px 15px,bold,left,10px)
+}
+input{
+    @include input(#000,$oxygen,18px,12px,5px,18px,10%,bold)
+}

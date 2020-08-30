@@ -1,0 +1,55 @@
+body {
+  background: url("../img/bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.btn {
+  background: #ff0000;
+  width: 10%;
+  padding: 10px 20px;
+  margin: 0;
+  font-family: "Oxygen", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  color: #000;
+  font-family: "Oxygen", sans-serif;
+  font-size: 45px;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+input {
+  color: #000;
+  font-family: "Oxygen", sans-serif;
+  font-size: 18px;
+  padding: 12px;
+  margin: 5px;
+  height: 18px;
+  width: 10%;
+  border: 2px solid gray;
+  outline: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+input:focus {
+  border-color: #4188FF;
+}
+
+/*# sourceMappingURL=index.css.map */
