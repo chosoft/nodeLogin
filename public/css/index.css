@@ -1,55 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: url("../img/bg.png");
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("../img/bg.png");
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
-  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.btn {
-  background: #ff0000;
-  width: 10%;
-  padding: 10px 20px;
-  margin: 0;
-  font-family: "Oxygen", sans-serif;
-  font-size: 18px;
+main {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+main form {
+  height: auto;
+  width: 30%;
+  padding: 20px 40px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+main form .title-wp {
+  width: 100%;
+  height: auto;
+  padding: 0 0 20px 0;
+}
+main form .title-wp h1 {
   color: #fff;
-  border: 0;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
 }
-.btn:hover {
-  transform: scale(1.05);
-}
-
-h1 {
-  color: #000;
-  font-family: "Oxygen", sans-serif;
-  font-size: 45px;
-  margin: 0;
-  font-weight: bold;
-  text-align: left;
-  padding: 12px 15px;
-}
-
-input {
-  color: #000;
-  font-family: "Oxygen", sans-serif;
-  font-size: 18px;
-  padding: 12px;
-  margin: 5px;
-  height: 18px;
-  width: 10%;
-  border: 2px solid gray;
-  outline: none;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  font-weight: bold;
-}
-input:focus {
-  border-color: #4188FF;
+main form input {
+  background: transparent !important;
+  margin-bottom: 20px;
+  color: #fff !important;
 }
 
 /*# sourceMappingURL=index.css.map */

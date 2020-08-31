@@ -1,113 +1,48 @@
-$oxygen: 'Oxygen', sans-serif;
-
-@mixin btn($color,$size,$padding,$margin,$font,$font-size,$fontColor,$weight){
-    background: $color;
-    width: $size;
-    padding: $padding;
-    margin: $margin;
-    font-family: $font;
-    font-size: $font-size;
-    color: $fontColor;
-    border: 0;
-    border-radius: 12px;
-    transition: all .3s ease;
-    font-weight: $weight;
-    text-align: center;
-    cursor: pointer;
-    &:hover{
-        transform: scale(1.05);
-    }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-@mixin input($fontColor,$fontFamily,$fontSize,$padding,$margin,$height,$width,$weight){
-    color: $fontColor;
-    font-family: $fontFamily;
-    font-size: $fontSize;
-    padding: $padding;
-    margin: $margin;
-    height: $height;
-    width: $width;
-    border: 2px solid gray;
-    outline: none;
-    border-radius: 12px;
-    transition: all .3s ease;
-    font-weight: $weight;
 
-    &:focus{
-        border-color: #4188FF;
-    }
-
-}
-@mixin title($type,$color,$fontFamily,$margin,$padding,$weight,$aling,$fontSize){
-    @if $type == 1{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 80px;
-        margin: $margin;
-        padding: $padding;
-        font-weight: $weight;
-        text-align: $aling;
-    }@else if $type == 2{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 75px;
-        margin: $margin;
-        padding: $padding;
-        font-weight: $weight;
-        text-align: $aling;
-    }@else if $type == 3{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 60px;
-        margin: $margin;
-        padding: $padding;
-        font-weight: $weight;
-        text-align: $aling;
-    }@else if $type == 4{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 50px;
-        margin: $margin;
-        text-align: $aling;
-        padding: $padding;
-    }@else if $type == 5{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 45px;
-        margin: $margin;
-        font-weight: $weight;
-        text-align: $aling;
-        padding: $padding;
-    }@else if $type == 6{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: 35px;
-        margin: $margin;
-        font-weight: $weight;
-        text-align: $aling;
-        padding: $padding;
-    }@else{
-        color: $color;
-        font-family:$fontFamily;
-        font-size: $fontSize;
-        margin: $margin;
-        padding: $padding;
-        font-weight: $weight;
-        text-align: $aling;
-    }
-}
 body{
-    background: url('../img/bg.png');
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("../img/bg.png");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
-    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-}
-.btn{
-    @include btn(#ff0000,10%,10px 20px,0,$oxygen,18px,#fff,bold)
-}
-h1{
-    @include title(5,#000,$oxygen,0,12px 15px,bold,left,10px)
-}
-input{
-    @include input(#000,$oxygen,18px,12px,5px,18px,10%,bold)
+main{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    form{
+        height: auto;
+        width: 30%;
+        padding: 20px 40px;
+        margin: auto;
+        background: rgba($color: #000000, $alpha: .5);
+        .title-wp{
+            width: 100%;
+            height: auto;
+            padding: 0 0 20px 0;
+            h1{
+                color: #fff;
+            }
+        }
+        input{
+            background: transparent !important;
+            margin-bottom: 20px;
+            color: #fff !important;
+        }
+    }
 }

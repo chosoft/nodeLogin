@@ -3,25 +3,33 @@ html(lang="es")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Login
+        if type === "login"
+            title Login
+        else
+            title Register
         link(rel="stylesheet", href="css/index.css")
+        link(rel="stylesheet", href="css/bulma.min.css")
         link(href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet")
     body
-        include header.pug
         main
             form(id="login")
-                input(type="text",id="user" name="user", placeholder="User")
-                input(type="password",id="password" name="pf",placeholder="Password")
-                if title === "login"
+                div(class="title-wp")
+                    if type == "login"
+                        h1(class="title is-1") Inicia sesion
+                    else
+                        h1(class="title is-1") Registrarse
+                    
+                input(class="input" type="text",id="user" name="user", placeholder="User")
+                input(class="input" type="password",id="password" name="pf",placeholder="Password")
+                if type === "login"
 
                 else
-                    input(type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
-                button(class="btn" type="submit" id="submit") Submit
+                    input(class="input" type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
+                button(class="button" type="submit" id="submit") Submit
 
-        include footer.pug
         script(src="js/jquery.min.js")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
-        if title === "login"
+        if type === "login"
             script(src="js/login.js")
         else
             script(src="js/register.js")
