@@ -8,62 +8,123 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main section {
+  width: 50%;
+  min-height: 100%;
+  max-height: 100%;
+}
+main .banner {
   background-image: url("../img/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  padding: 50px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-main {
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-main form {
-  height: auto;
-  width: 30%;
-  padding: 20px 40px;
-  margin: auto;
-  background: rgba(0, 0, 0, 0.5);
-}
-main form .title-wp {
-  width: 100%;
-  height: auto;
-  padding: 0 0 20px 0;
-}
-main form .title-wp h1 {
-  color: #fff;
-}
-main form label {
-  color: #fff !important;
-}
-main form input {
-  background: transparent !important;
-  margin-bottom: 20px;
-  margin-top: 5px;
-  color: #fff !important;
-}
-main form .wp-btns {
-  display: flex;
-  flex-direction: row;
-  padding-top: 10px;
   justify-content: space-between;
 }
-main form .wp-btns a {
-  font-size: 20px;
+main .banner .wp-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .banner .wp-logo img {
+  width: 500px;
+}
+main .banner .wp-title {
+  width: 100%;
+  height: auto;
+}
+main .banner .wp-title h1 {
+  text-align: center;
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 80px;
+}
+main .banner .wp-copy {
+  width: 100%;
+  padding: 20px;
+  padding-top: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .banner .wp-copy .copy-text {
+  color: #ffffff;
+  font-family: "Oxygen", sans-serif;
   text-align: center;
 }
-main form .wp-btns button {
-  background: transparent !important;
-  color: #fff !important;
-  font-size: 20px;
+main .form {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 50px;
 }
+main .form form {
+  width: 55%;
+  border: 2px solid #ccc;
+}
+main .form form .wp-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .form form .wp-logo img {
+  width: 300px;
+}
+main .form form .wp-inputs {
+  width: 100%;
+  height: auto;
+  padding: 30px 20px;
+}
+main .form form .wp-inputs label {
+  font-family: "Oxygen", sans-serif;
+  font-size: 18px;
+  color: #191919;
+}
+main .form form .wp-inputs input {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #707070;
+  font-size: 18px;
+}
+main .form form .wp-inputs .wp-passwords input {
+  width: 85%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+}
+main .form form .wp-inputs .wp-passwords button {
+  width: 15%;
+  padding: 15px 15px;
+  padding-top: 17px;
+  padding-bottom: 14px;
+  border: 0;
+  background: #4188FF;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: #ffffff;
+  font-family: "Oxygen", sans-serif;
+  cursor: pointer;
+}
+
+/*  */
 
 /*# sourceMappingURL=index.css.map */
