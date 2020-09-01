@@ -75,7 +75,6 @@ main{
         padding: 50px;
         form{
             width: 55%;
-            border: 2px solid #ccc;
             .wp-logo{
                 display:flex;
                 flex-direction: row;
@@ -123,6 +122,41 @@ main{
                         font-family: $oxygen;
                         cursor: pointer;
                     }
+                }
+            }
+            .button{
+                width: 100%;
+                background: #FED83F;
+                border: 0;
+                border-radius: 12px;
+                padding: 12px 15px;
+                margin-bottom: 15px;
+                color: #fff;
+                font-family: $oxygen;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .move{
+                transition: all 0.3s ease;
+                &:hover{
+                    transform: scale(1.05);
+                }
+            }
+            .wp-link{
+                width:100%;
+                display: flex;
+                flex-direction:row;
+                justify-content:center;
+            }
+            .link{
+                background: transparent;
+                color: #191919;
+                text-align: center;
+                text-decoration: none;
+                font-weight: bold;
+                margin-bottom: 0;
+                &:hover{
+                    text-decoration: underline;
                 }
             }
         }

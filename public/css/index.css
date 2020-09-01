@@ -76,7 +76,6 @@ main .form {
 }
 main .form form {
   width: 55%;
-  border: 2px solid #ccc;
 }
 main .form form .wp-logo {
   display: flex;
@@ -123,6 +122,41 @@ main .form form .wp-inputs .wp-passwords button {
   color: #ffffff;
   font-family: "Oxygen", sans-serif;
   cursor: pointer;
+}
+main .form form .button {
+  width: 100%;
+  background: #FED83F;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+main .form form .move {
+  transition: all 0.3s ease;
+}
+main .form form .move:hover {
+  transform: scale(1.05);
+}
+main .form form .wp-link {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .form form .link {
+  background: transparent;
+  color: #191919;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+main .form form .link:hover {
+  text-decoration: underline;
 }
 
 /*  */
