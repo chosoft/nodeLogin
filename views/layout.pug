@@ -8,7 +8,7 @@ html(lang="es")
         else
             title Register
         link(rel="stylesheet", href="css/index.css")
-        link(rel="stylesheet", href="css/bulma.min.css")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
         link(href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet")
     body
         main
@@ -18,17 +18,27 @@ html(lang="es")
                         h1(class="title is-1") Inicia sesion
                     else
                         h1(class="title is-1") Registrarse
-                    
-                input(class="input" type="text",id="user" name="user", placeholder="User")
-                input(class="input" type="password",id="password" name="pf",placeholder="Password")
+                label(for="user" class="subtitle is-5") Nombre de Usuario
+                input( type="text",id="user" name="user", placeholder="User")
+                label(for="password" class="subtitle is-5") Contraseña
+                input( type="password",id="password" name="pf",placeholder="Password")
                 if type === "login"
 
                 else
+                    label(for="passwordConfirm" class="subtitle is-5") Contraseña(nuevamente)
                     input(class="input" type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
-                button(class="button" type="submit" id="submit") Submit
+                div(class="wp-btns")
+                    button(class="button" type="submit" id="submit") Submit
+                    if type === "login"
+                        a(href="/register") Registrarse
+                    else
+                        a(href="/") Inicia sesion
 
         script(src="js/jquery.min.js")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script( src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
+        script( src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
+        script( src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous")
         if type === "login"
             script(src="js/login.js")
         else

@@ -41,10 +41,29 @@ main form .title-wp {
 main form .title-wp h1 {
   color: #fff;
 }
+main form label {
+  color: #fff !important;
+}
 main form input {
   background: transparent !important;
   margin-bottom: 20px;
+  margin-top: 5px;
   color: #fff !important;
+}
+main form .wp-btns {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  justify-content: space-between;
+}
+main form .wp-btns a {
+  font-size: 20px;
+  text-align: center;
+}
+main form .wp-btns button {
+  background: transparent !important;
+  color: #fff !important;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=index.css.map */

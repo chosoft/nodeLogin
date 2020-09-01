@@ -39,10 +39,29 @@ main{
                 color: #fff;
             }
         }
+        label{
+            color: #fff !important;
+        }
         input{
             background: transparent !important;
             margin-bottom: 20px;
+            margin-top: 5px;
             color: #fff !important;
+        }
+        .wp-btns{
+            display:flex;
+            flex-direction: row;
+            padding-top: 10px;
+            justify-content: space-between;
+            a{
+                font-size: 20px;
+                text-align: center;
+            }
+            button{
+                background: transparent !important;
+                color: #fff !important;
+                font-size: 20px;
+            }
         }
     }
 }
