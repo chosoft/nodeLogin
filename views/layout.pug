@@ -38,18 +38,20 @@ html(lang="es")
                             input( type="email",id="correo" name="correo", placeholder="Correo")
                         div(class="wp-passwords")
                             label(for="password" class="subtitle is-5") Contraseña
-                            input( type="password",id="password" name="pf",placeholder="Contraseña")
-                            button(class="button-toggle" ref="password")
-                                    img(src="", alt="v")
-                                    img(src="", alt="nv")
+                            div(class="wp-toggle")
+                                input( type="password",id="password" name="pf",placeholder="Contraseña")
+                                button(class="button-toggle" ref="password")
+                                        img(src="img/eye.svg",id="img-1" alt="v")
+                                        img(src="img/hide.svg",id="img-2" alt="nv")
                             if type === "login"
 
                             else
                                 label(for="passwordConfirm" class="subtitle is-5") Contraseña(nuevamente)
-                                input(class="input" type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
-                                button(class="button-toggle" ref="passwordConfirm" )
-                                    img(src="", alt="v")
-                                    img(src="", alt="nv")
+                                div(class="wp-toggle")
+                                    input(class="input" type="password",id="passwordConfirm" name="pff", placeholder="Repeat Password")
+                                    button(class="button-toggle" ref="passwordConfirm" )
+                                        img(src="img/eye.svg", id="img-3" alt="v")
+                                        img(src="img/hide.svg",id="img-4" alt="nv")
                         if type === "login"
                             button(class="button move" type="submit" id="submit") Ingresar
                         else
@@ -60,7 +62,6 @@ html(lang="es")
                                 a(class="button link" href="/register") Registrarse
                             else
                                 a(class="button link" href="/") Inicia sesion
-            
         script(src="js/jquery.min.js")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
         if type === "login"

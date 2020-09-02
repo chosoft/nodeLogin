@@ -103,24 +103,35 @@ main{
 
                 }
                 .wp-passwords{
-                    input{
-                        width:85%;
-                        border-top-right-radius: 0;
-                        border-bottom-right-radius: 0;
-                        border-right: none;
-                    }
-                    button{
-                        width:15%;
-                        padding: 15px 15px;
-                        padding-top: 17px;
-                        padding-bottom: 14px;
-                        border: 0;
-                        background: #4188FF;
-                        border-top-right-radius: 12px;
-                        border-bottom-right-radius: 12px;
-                        color: #ffffff;
-                        font-family: $oxygen;
-                        cursor: pointer;
+                    .wp-toggle{
+                        margin-bottom: 20px;
+                        margin-top:5px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        input{
+                            width:85%;
+                            margin: 0;
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                            border-right: none;
+                        }
+                        button{
+                            box-sizing: border-box;
+                            width:15%;
+                            padding: 5px 15px;
+                            border: 0;
+                            background: #4188FF;
+                            border-top-right-radius: 12px;
+                            border-bottom-right-radius: 12px;
+                            color: #ffffff;
+                            font-family: $oxygen;
+                            cursor: pointer;
+                            img:last-child{
+                                display: none;
+                            }
+                        }
                     }
                 }
             }
