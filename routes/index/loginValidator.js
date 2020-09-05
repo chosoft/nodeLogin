@@ -5,7 +5,9 @@ router.get('/', (req,res,next)=>{
     res.redirect('/')
 })
 router.post('/', (req,res,next)=>{
-    validator(req.body)
+    validator(req.body).then(ok => {
+        res.send(ok)
+    }).catch(e => res.status(500))
 })
 
 module.exports = router

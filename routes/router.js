@@ -4,7 +4,14 @@ const CantFound = require('./404/404')
 const registerView = require('./register/registerView')
 const registerValidator = require('./register/registerValidator')
 const loginValidator = require('./index/loginValidator')
+const session = require('express-session')
+
 const router = function(server){
+    server.use(session({
+        secret: "juan",
+        resave:false,
+        saveUninitialized: false
+    }))
     server.use('/',indexRouter)
     server.use('/register',registerView)
     server.use('/api/register',registerValidator)

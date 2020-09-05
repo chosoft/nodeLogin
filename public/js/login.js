@@ -1,11 +1,11 @@
 $(document).ready(function() {
     $("#submit").click(function(e){
         e.preventDefault()
-        let userName = $('#user').val()
+        let correo = $('#correo').val()
         let password = $('#password').val()
-        if(userName !== '' && password !== ''){
+        if(correo !== '' && password !== ''){
             const data = {
-                userName,
+                correo,
                 password
             }
             axios({

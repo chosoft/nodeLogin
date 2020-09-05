@@ -6,13 +6,10 @@ router.get('/', (req,res,next)=>{
     res.redirect('/register')
 })
 router.post('/', (req,res,next)=>{
-
     verificator(req.body).then(data =>{
-        res.status(500)
-        res.send(data)
+        res.status(200).send(data)
     }).catch(err =>{
-        res.status(500)
-        res.send(`A error Has Been ${err}`)
+        res.status(200).send(`${err}`)
     })
 
 })

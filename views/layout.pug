@@ -29,8 +29,14 @@ html(lang="es")
                         else
                             img(src="img/register.svg", alt="imagen de Registro")
                     div(class="wp-inputs")
-                        label(for="user" class="subtitle is-5") Usuario
-                        input( type="text",id="user" name="user", placeholder="Usuario")
+                        if type === "login"
+
+                            label(for="correo" class="subtitle is-5") Correo
+                            input( type="email",id="correo" name="correo", placeholder="Correo")
+                        else
+                            label(for="user" class="subtitle is-5") Usuario
+                            input( type="text",id="user" name="user", placeholder="Usuario")
+                        
                         if type === "login"
                         
                         else
@@ -63,6 +69,7 @@ html(lang="es")
                             else
                                 a(class="button link" href="/") Inicia sesion
         script(src="js/jquery.min.js")
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         script(src="https://unpkg.com/axios/dist/axios.min.js")
         if type === "login"
             script(src="js/login.js")

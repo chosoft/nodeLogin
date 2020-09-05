@@ -1,11 +1,16 @@
+const {getter} = require('../../model/saver')
 
 function registerValidation(obj){
     return new Promise((resolve, reject) =>{
-        let {userName,password} = obj
-        if(userName === '' || password ==='' ){
-            reject('undefined data')
+        let {correo,password} = obj
+        if(correo === '' || password ==='' ){
+            reject('vacios')
         }else{
-
+            getter(correo,password).then(data => {
+                resolve(data)
+            }).catch(e => reject(e))
         }
     })
 }
+
+module.exports = registerValidation
