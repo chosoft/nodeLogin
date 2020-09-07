@@ -37,10 +37,11 @@ $(document).ready(function(){
                 method: 'POST',
                 data: data
             }).then(ok =>{
+                console.log(data)
                 switch(ok.data){
                     case "ok":
                         Swal.fire({
-                            title: "Logueado Correctamente",
+                            title: "Registrado Correctamente",
                             text: "Espera a que activen tu usuario",
                             icon: "success",
                             confirmButtonText: "Ok"

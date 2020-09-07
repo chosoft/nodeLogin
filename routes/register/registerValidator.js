@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const verificator = require('./../../utils/middlewares/verficationRegisterApi')
-const hasher = require('./../../api/hashing')
 router.get('/', (req,res,next)=>{
     res.redirect('/register')
 })

@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const {saver} = require('./../model/saver')
+const {save} = require('./../model/saver')
 
 function hasher(saltRounds,obj){
     return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ function hasher(saltRounds,obj){
                                 reject(err)
                             }else{
                                 arrayHashing = [userName,hash,correo]
-                                saver(arrayHashing).then(res => {
+                                save(arrayHashing).then(res => {
                                     resolve(res)
                                 }).catch(err => reject(err))
                             }

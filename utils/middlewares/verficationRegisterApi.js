@@ -3,13 +3,12 @@ const chalk = require('chalk')
 function verificator(obj){
     return new Promise((resolve, reject) =>{
         let {userName,password,passwordConfirm,correo} = obj
-        const regexUserName = /(\w+[@!#$%&?¡¿]?)/
-        const regexPassword = /([a-zA-Z]+[\d]+[@!#$%&?¡¿]+)/
+        let array = [new RegExp(/(\d)/),new RegExp(/([a-zA-Z])/),new RegExp(/([@!#$%&?¡¿])/)]
         if(userName === '' || password==='' ||passwordConfirm === '' || correo === ''){
             reject('vacios')
         }
-        if(regexUserName.test(userName) && (userName.length >= 3 && userName.length <=20)){
-            if(regexPassword.test(password) && (password.length >= 12 && password.length <=25)){
+        if((userName.length >= 3 && userName.length <=20)){
+            if((password.search(array[0]) > -1)&& (password.search(array[1]) > -1) && (password.search(array[2]) > -1) && (password.length >= 12 && password.length <=25)){
                 if(password === passwordConfirm){
                     console.log(`${chalk.blue(`[SERVER][VERIFICATOR-API]`)}Successful`)
                     const salt = Math.floor(Math.random() * 10)
@@ -22,6 +21,7 @@ function verificator(obj){
                     reject('!passwords')
                 }
             }else{
+                console.log('a')
                 reject('!password')
             }
         }else{

@@ -13,10 +13,64 @@ $(document).ready(function() {
                 method: 'POST',
                 data: data
             }).then(ok =>{
-                console.log(ok.data)
-            }).catch(err => console.log(err))
+                switch(ok.data){
+                    case 'vacios':
+                        Swal.fire({
+                            title: 'Campos Vacios!',
+                            icon: 'warning',
+                            text: 'Rellena todo los campos',
+                            confirmButtonText: "Ok"
+                        })
+                        break
+                    case '!found':
+                        Swal.fire({
+                            title: 'Correo no encontrado',
+                            icon: 'warning',
+                            text: 'El correo no se encuentra o esta inactivo',
+                            confirmButtonText: "Ok"
+                        })
+                        break
+                    case '!fail':
+                        Swal.fire({
+                            title: 'Error al loguearse',
+                            icon: 'error',
+                            text: 'La combinacion de usuario y contraseña no se ha encontrado',
+                            confirmButtonText: "Ok"
+                        })
+                        break
+                    case 'ok':
+                        Swal.fire({
+                            title: 'Logueado Correctamente',
+                            icon: 'success',
+                            text: 'Pronto sera redireccionado',
+                            confirmButtonText: "Ok"
+                        })
+                        break
+                    default:
+                        Swal.fire({
+                            title: 'Error',
+                            icon: 'error',
+                            text: 'Ha ocurrido un error interno',
+                            confirmButtonText: "Ok"
+                        })
+                        break
+                        
+                }
+            }).catch(err => {
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "Ha ocurrido un error interno",
+                    confirmButtonText: "Ok"
+                })
+            })
         }else{
-            console.log('error')
+            Swal.fire({
+                title: 'Campos Vacios!',
+                icon: 'warning',
+                text: 'Rellena todo los campos',
+                confirmButtonText: "Ok"
+            })
         }
 
     })

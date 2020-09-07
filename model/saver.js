@@ -56,12 +56,13 @@ function findMail(mail){
 function getter(mail,password){
     return new Promise((resolve, reject) =>{
         try {
-            User.findOne({correo:mail}, function(err,user){
+            User.findOne({correo:mail,active: true}, function(err,user){
                 if(err){
                     reject(err)
                 }else{
                     if(user === null){
-                        reject('!found')
+                        resolve('!found')
+
                     }else{
                         compare(password,user.password).then(dat =>{
                             if(dat === true){
