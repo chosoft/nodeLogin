@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {config} = require('../config/enviroment')
 const chalk = require('chalk')
-const {compare,compareAdmin,create} = require('../api/compare')
+const bcrypt = require('bcrypt')
+const {compare,compareAdmin} = require('../api/compare')
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
     console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
 })
@@ -35,31 +36,47 @@ function registerOrLoginAdmin(){
                     adminMail:config.adminMail,
                     adminSecret:config.adminSecret
                 }
-                create(dataAdmin).then((ok) => {
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)}Register successful`)
-                }).catch(e => {
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to register the admin ${chalk.red(e)}`)
+                const salt = Math.floor(Math.random() * 10)
+                bcrypt.genSalt(salt,function(err,salt){
+                    if(err){
+                        console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error occurred`)
+                    }
+                    bcrypt.hash(dataAdmin.adminPassword,salt,function(err,hash){
+                        if (err){
+                            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error occurred`)  
+                        }else{
+                            const newData = {
+                                adminUser: dataAdmin.adminUser,
+                                adminPassword:  hash,
+                                adminMail:config.adminMail,
+                                adminSecret:config.adminSecret
+                            }
+                            try {
+                                const admin = new Admin(newData)
+
+                                admin.save().then((ok) => {
+                                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Created admin`)
+                                }).catch(e => console.log(e))
+                                
+                            } catch (error) {
+                                console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)}A error occurred`)
+                            }
+                        }
+                    })
                 })
             }else{
-                if(compareAdmin(config.adminPassword,user.adminPassword)){
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Good Login of a admin`)
-                }else{
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Bad Login`)
-                }
+                compareAdmin(config.adminPassword,user.adminPassword).then(ok =>{
+                    if(ok){
+                        console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Good login of a admin`)
+                    }else{
+                        console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Bad login of a admin`)
+                    }
+                }).catch(e => console.log(e))
             }
         }
     })
 }
-function saveAdmin(data){
-    return new Promise((resolve, reject) =>{        
-        const admin = new Admin(data)
-        admin.save().then((ok) => {
-            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} The user has been saved`)
-        }).catch(e => {
-            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to login the admin ${chalk.red(err)}`)
-        })
-    })
-}
+
 function save(data){
     return new Promise((resolve, reject) =>{
         findMail(data[2]).then(ok =>{
@@ -124,5 +141,6 @@ function getter(mail,password){
         }
     })
 }
+
 registerOrLoginAdmin()
 module.exports = {save,getter}
