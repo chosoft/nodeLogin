@@ -110,5 +110,5 @@ function getter(mail,password){
         }
     })
 }
-
+//ok
 module.exports = {save,getter}
