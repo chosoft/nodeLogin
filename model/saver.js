@@ -2,8 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {config} = require('../config/enviroment')
 const chalk = require('chalk')
-const {compare,compareAdmin} = require('../api/compare')
-
+const {compare,compareAdmin,create} = require('../api/compare')
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
     console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
 })
@@ -27,13 +26,19 @@ const Admin = mongoose.model('Admin',adminSchema)
 function registerOrLoginAdmin(){
     Admin.findOne({adminMail: config.adminMail}, function(err,user){
         if(err){
-            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has beem at the momento to login the admin ${chalk.red(err)}`)
+            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to login the admin ${chalk.red(err)}`)
         }else{
             if(user === null){
-                Admin.save({adminUser:config.adminUser,adminPassword:config.adminPassword,adminMail:config.adminMail,adminSecret:config.adminSecret}).then((ok)=>{
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Admin user create`)
-                }).catch(e =>{
-                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A Error has been at the momento to create the user`)
+                const dataAdmin = {
+                    adminUser:config.adminUser,
+                    adminPassword: config.adminPassword,
+                    adminMail:config.adminMail,
+                    adminSecret:config.adminSecret
+                }
+                create(dataAdmin).then((ok) => {
+                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)}Register successful`)
+                }).catch(e => {
+                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to register the admin ${chalk.red(e)}`)
                 })
             }else{
                 if(compareAdmin(config.adminPassword,user.adminPassword)){
@@ -45,7 +50,16 @@ function registerOrLoginAdmin(){
         }
     })
 }
-
+function saveAdmin(data){
+    return new Promise((resolve, reject) =>{        
+        const admin = new Admin(data)
+        admin.save().then((ok) => {
+            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} The user has been saved`)
+        }).catch(e => {
+            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to login the admin ${chalk.red(err)}`)
+        })
+    })
+}
 function save(data){
     return new Promise((resolve, reject) =>{
         findMail(data[2]).then(ok =>{
@@ -110,5 +124,5 @@ function getter(mail,password){
         }
     })
 }
-//ok
+registerOrLoginAdmin()
 module.exports = {save,getter}
