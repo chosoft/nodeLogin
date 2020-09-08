@@ -5,7 +5,7 @@ const registerView = require('./register/registerView')
 const registerValidator = require('./register/registerValidator')
 const loginValidator = require('./index/loginValidator')
 const session = require('express-session')
-
+const {config} = require('../config/enviroment')
 const router = function(server){
     server.use(session({
         secret: "juan",

@@ -20,4 +20,7 @@ function comparePass(pass,hash){
     })
 }
 
-module.exports = comparePass
+function compareAdmin(pass,hash){
+    return bcrypt.compare(pass,hash)
+}
+module.exports = {comparePass,compareAdmin}
