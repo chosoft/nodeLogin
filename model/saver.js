@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 const {config} = require('../config/enviroment')
 const chalk = require('chalk')
 const bcrypt = require('bcrypt')
-const {compare,compareAdmin} = require('../api/compare')
+const {comparePass,compareAdmin} = require('../api/compare')
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
     console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
 })
@@ -125,7 +125,7 @@ function getter(mail,password){
                         resolve('!found')
 
                     }else{
-                        compare(password,user.password).then(dat =>{
+                        comparePass(password,user.password).then(dat =>{
                             if(dat === true){
                                 resolve('ok')
                             }else{

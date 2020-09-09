@@ -13,6 +13,7 @@ $(document).ready(function() {
                 method: 'POST',
                 data: data
             }).then(ok =>{
+                console.log(ok)
                 switch(ok.data){
                     case 'vacios':
                         Swal.fire({
@@ -50,7 +51,7 @@ $(document).ready(function() {
                         Swal.fire({
                             title: 'Error',
                             icon: 'error',
-                            text: 'Ha ocurrido un error interno',
+                            text: 'Ha ocurrido unsfd error interno',
                             confirmButtonText: "Ok"
                         })
                         break
@@ -60,7 +61,7 @@ $(document).ready(function() {
                 Swal.fire({
                     title: "Error",
                     icon: "error",
-                    text: "Ha ocurrido un error interno",
+                    text: "Ha ocurrido un efdsrror interno",
                     confirmButtonText: "Ok"
                 })
             })

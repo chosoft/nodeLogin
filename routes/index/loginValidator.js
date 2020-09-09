@@ -8,7 +8,7 @@ router.get('/', (req,res,next)=>{
 })
 router.post('/', (req,res,next)=>{
     validator(req.body).then(ok => {
-        res.send(ok)
+        res.redirect('/register')
     }).catch(e => res.status(500))
 })
 

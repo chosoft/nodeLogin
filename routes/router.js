@@ -8,7 +8,7 @@ const session = require('express-session')
 const {config} = require('../config/enviroment')
 const router = function(server){
     server.use(session({
-        secret: "juan",
+        secret: config.adminSecret,
         resave:false,
         saveUninitialized: false
     }))
