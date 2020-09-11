@@ -1,0 +1,141 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Oxygen", sans-serif;
+  font-size: 18px;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: #FEDA3F;
+  flex-direction: column;
+}
+header .wp-top {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header .wp-top nav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 12px;
+}
+header .wp-top nav .wp-profile {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header .wp-top nav .wp-profile img {
+  width: 45px;
+  border-radius: 50%;
+}
+header .wp-top nav .wp-profile span {
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+header .wp-top nav .wp-btn-menu {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header .wp-top nav .wp-btn-menu img {
+  width: 35px;
+}
+header .wp-bottom {
+  width: 0;
+  height: auto;
+  display: none;
+  transition: all 0.3s ease;
+}
+header .wp-bottom .wp-title {
+  width: 100%;
+  height: auto;
+  padding: 15px 12px;
+  text-align: center;
+}
+header .wp-bottom .wp-title h1 {
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+header .wp-bottom .middle-bar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header .wp-bottom .middle-bar .bar {
+  height: 5px;
+  width: 80%;
+  background: #fff;
+  border-radius: 5px;
+}
+header .wp-bottom .nav-links {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header .wp-bottom .nav-links nav {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+header .wp-bottom .nav-links nav a {
+  width: 30%;
+  height: auto;
+  display: flex;
+  padding: 15px 12px 15px 10px;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  text-decoration: none;
+  font-family: "Oxygen", sans-serif;
+  font-weight: semi-bold;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+header .wp-bottom .nav-links nav a img {
+  width: 35px;
+}
+header .wp-bottom .nav-links nav a p {
+  margin-left: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+header .wp-bottom .nav-links nav a:hover {
+  background: #f2cd3c;
+}
+
+/*# sourceMappingURL=perfil.css.map */

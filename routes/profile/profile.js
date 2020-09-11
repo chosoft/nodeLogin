@@ -4,7 +4,7 @@ const session = require('express-session')
 
 router.get('/', (req,res,next)=>{
     if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
-        res.render("profile",{user:req.session.user})
+        res.render("profile",{user:req.session.user,img:null})
     }else{
         res.redirect('/')
     }

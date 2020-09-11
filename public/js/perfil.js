@@ -11,4 +11,15 @@ $(document).ready(function(){
             location.href = '/'
         })
     })
+    $('#menu').click(function(e){
+        e.preventDefault()
+        const menu = $('#menu-display')
+        if(menu.css('display') === 'none'){
+            menu.css('width', '100%')
+            menu.css('display', 'block')
+        }else{
+            menu.css('width', '100%')
+            menu.css('display', 'none')
+        }
+    })
 })
