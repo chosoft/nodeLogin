@@ -127,7 +127,7 @@ function getter(mail,password){
                     }else{
                         comparePass(password,user.password).then(dat =>{
                             if(dat === true){
-                                resolve('ok')
+                                resolve(['ok',user.password,user.correo,user.user])
                             }else{
                                 resolve('!fail')
                             }

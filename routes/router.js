@@ -4,16 +4,21 @@ const CantFound = require('./404/404')
 const registerView = require('./register/registerView')
 const registerValidator = require('./register/registerValidator')
 const loginValidator = require('./index/loginValidator')
+const profileRt = require('./profile/profile')
+const logout = require('./profile/logout')
 const session = require('express-session')
 const {config} = require('../config/enviroment')
 const router = function(server){
     server.use(session({
         secret: config.adminSecret,
-        resave:false,
-        saveUninitialized: false
+        resave:true,
+        saveUninitialized: true,
+        maxAge: 900000
     }))
     server.use('/',indexRouter)
     server.use('/register',registerView)
+    server.use('/profile',profileRt)
+    server.use('/logout',logout)
     server.use('/api/register',registerValidator)
     server.use('/api/login',loginValidator)
     server.use('*',CantFound)

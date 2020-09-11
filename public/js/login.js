@@ -46,6 +46,9 @@ $(document).ready(function() {
                             text: 'Pronto sera redireccionado',
                             confirmButtonText: "Ok"
                         })
+                        setTimeout(function () {
+                            location.href = '/profile'
+                        },1000)
                         break
                     default:
                         Swal.fire({
