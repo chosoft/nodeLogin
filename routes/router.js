@@ -7,8 +7,14 @@ const loginValidator = require('./index/loginValidator')
 const profileRt = require('./profile/profile')
 const modelos = require('./profile/modelos')
 const logout = require('./profile/logout')
+const modelAdd = require('./profile/api/addModel')
 const session = require('express-session')
 const {config} = require('../config/enviroment')
+const multer = require('multer')
+const path = require('path')
+
+
+
 const router = function(server){
     server.use(session({
         secret: config.adminSecret,
@@ -23,6 +29,7 @@ const router = function(server){
     server.use('/logout',logout)
     server.use('/api/register',registerValidator)
     server.use('/api/login',loginValidator)
+    server.use('/api/modeladd',modelAdd)
     server.use('*',CantFound)
 }
 

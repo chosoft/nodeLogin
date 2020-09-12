@@ -3,9 +3,10 @@ $(document).ready(function(){
         e.preventDefault();
         Swal.mixin({
             input: "text",
+            text: "",
             confirmButtonText: 'Next &rarr;',
             showCancelButton: true,
-            progressSteps: ['1', '2', '3'],
+            progressSteps: ['1', '2', '3','4','5','6'],
             inputAttributes:{}
         }).queue([
             {
@@ -19,16 +20,49 @@ $(document).ready(function(){
                 inputAttributes: {placeholder: 'Nombre del colegio'}
             },
             {
-                title: 'Nombre del Colegio',
+                title: 'Direccion',
                 input: 'text',
-                inputAttributes: {placeholder: 'Nombre del colegio'}
+                inputAttributes: {placeholder: 'Direccion del colegio'}
             },
-            'Question 3'
+            {
+                title: 'Correos del modelo',
+                input: 'textarea',
+                text: "Divide los correos mediante una coma (,)",
+                inputAttributes: {placeholder: 'Correos del modelo'}
+            },
+            {
+                title: 'Lideres del modelo',
+                input: 'textarea',
+                text: "Divide los lideres mediante una coma (,)",
+                inputAttributes: {placeholder: 'Lideres del modelo'}
+            },
+            {
+                title: 'Telefonos del modelo',
+                input: 'textarea',
+                text: "Divide los telefonos mediante una coma (,)",
+                inputAttributes: {placeholder: 'Telefonos del modelo'}
+            }
         ]).then((result) => {
-            console.log(result)
-            const formData = new FormData()
-            console.log($('#file'))
-            formData.append('fileImg',$('#file').files[0])
+            let data = {
+                nombre:result.value[0],
+                colegio: result.value[1],
+                direccion: result.value[2],
+                correos: result.value[3].split(','),
+                lideres: result.value[4].split(','),
+                telefonos: result.value[5].split(','),
+            }
+            axios({
+                url: '/api/modeladd',
+                method: 'POST',
+                data,
+            }).then(data => {
+                console.log(data)
+            }).catch(e => {
+                console.log(e)
+            })
         })
     })
+
+
+    
 })

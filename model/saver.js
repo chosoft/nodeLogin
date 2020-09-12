@@ -135,7 +135,6 @@ function modelosGetter(){
                 if(err){
                     reject(err)
                 }else{
-                    console.log(modelos)
                     resolve(modelos)
                 }
             })
