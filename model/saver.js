@@ -12,6 +12,7 @@ const userSchema = new Schema({
     user: String ,
     password: String,
     correo: String,
+    role: {type:String,default: "user"},
     active:{type: Boolean, default: false},
     dateRegistered: {type: Date, default: Date.now}
 })
