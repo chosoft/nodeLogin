@@ -11,6 +11,8 @@ router.post('/', (req,res,next)=>{
             req.session.password = ok[1]
             req.session.correo = ok[2]
             req.session.user = ok[3]
+            req.session.role = ok[4]
+            req.session.img = ok[5]
             res.send(ok[0])
         }else{
             res.send(ok)

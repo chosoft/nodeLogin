@@ -1,5 +1,5 @@
 $oxygen: 'Oxygen',sans-serif;
-
+$lato: 'Lato',sans-serif;
 *{
     padding: 0;
     margin: 0;
@@ -39,6 +39,7 @@ header{
                 align-items: center;
                 img{
                     width: 45px;
+                    height: 45px;
                     border-radius: 50%;
                 }
                 span{
@@ -71,7 +72,7 @@ header{
             height: auto;
             padding: 15px 12px;
             text-align: center;
-            h1{
+            h2{
                 color: #fff;
                 font-family: $oxygen;
                 font-weight: bold;
@@ -135,6 +136,50 @@ header{
                     }
                 }
             }
+        }
+    }
+}
+main{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    .wp-title{
+        padding: 15px 12px;
+        h1{
+            font-family: $oxygen;
+            font-size: 55px;
+            color: #191919;
+            font-weight: bold;
+        }
+        
+    }
+    .wp-msg{
+        padding: 15px 12px;
+        width: 100%;
+        display:flex;
+        flex-direction: row;
+        justify-content:center;
+        margin-bottom: 10px;
+        p{
+            width: 50%;
+            font-family: $lato;
+            font-weight: normal;
+            font-size: 19px;
+            text-align: center;
+            color: #191919;
+        }
+    }
+    .wp-img{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        img{
+            width: 80%;
         }
     }
 }

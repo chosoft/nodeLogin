@@ -2,16 +2,13 @@ header
     div(class="wp-top")
         nav
             div(class="wp-profile")
-                if img === null
-                    img(src="icons/user.svg", alt="User Image")
-                else
-                    img(src="icons/user.svg", alt="User Image")
+                img(src=img, alt="User Image")
                 span= user
             div(class="wp-btn-menu" id="menu")
                 img(src="icons/menu.svg")
     div(class="wp-bottom" id="menu-display")
         div(class="wp-title")
-            h1 Menu
+            h2 Menu
         div(class="middle-bar")
             div(class="bar")
         div(class="nav-links")
@@ -25,9 +22,12 @@ header
                 a(href="/correos")
                     img(src="icons/correo-electronico.svg", alt="") 
                     p Correos
-                a(href="/usuarios")
-                    img(src="icons/usuario.svg", alt="") 
-                    p Usuarios
+                if role === 'admin'
+                    a(href="/usuarios")
+                        img(src="icons/usuario.svg", alt="") 
+                        p Usuarios
+                else
+
                 a(href="/configuracion")
                     img(src="icons/engranaje.svg", alt="") 
                     p Configuracion

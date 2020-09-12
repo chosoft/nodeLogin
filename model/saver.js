@@ -7,16 +7,30 @@ const {comparePass,compareAdmin} = require('../api/compare')
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
     console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
 })
+const modelosSchema = new Schema({
+    nombre: String,
+    colegio: String,
+    direccion: String,
+    correos: Array,
+    lideres: Array,
+    telefonos: Array,
+    img: {type: String, default:'/modelosImg/logo.svg'},
+    creador: String,
+    dataRegistered: {type:Date,default: Date.now()}
+})
+const Modelo = mongoose.model('Modelo',modelosSchema)
 
 const userSchema = new Schema({
     user: String ,
     password: String,
     correo: String,
+    img: {type:String,default: '/imgProfile/logo.svg'},
     role: {type:String,default: "user"},
     active:{type: Boolean, default: false},
     dateRegistered: {type: Date, default: Date.now}
 })
 const User = mongoose.model('User',userSchema)
+
 const adminSchema = new Schema({
     adminUser: {type:String,required:true},
     adminPassword: {type:String,required:true},
@@ -114,7 +128,22 @@ function findMail(mail){
         }
     })
 }
-
+function modelosGetter(){
+    return new Promise((resolve, reject) =>{
+        try {
+            Modelo.find({}, function(err,modelos){
+                if(err){
+                    reject(err)
+                }else{
+                    console.log(modelos)
+                    resolve(modelos)
+                }
+            })
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 function getter(mail,password){
     return new Promise((resolve, reject) =>{
         try {
@@ -128,7 +157,7 @@ function getter(mail,password){
                     }else{
                         comparePass(password,user.password).then(dat =>{
                             if(dat === true){
-                                resolve(['ok',user.password,user.correo,user.user])
+                                resolve(['ok',user.password,user.correo,user.user,user.role,user.img])
                             }else{
                                 resolve('!fail')
                             }
@@ -144,4 +173,4 @@ function getter(mail,password){
 }
 
 registerOrLoginAdmin()
-module.exports = {save,getter}
+module.exports = {save,getter,modelosGetter}
