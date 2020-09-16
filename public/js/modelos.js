@@ -57,6 +57,7 @@ $(document).ready(function(){
                 data,
             }).then(data => {
                 console.log(data)
+                getterModels()
             }).catch(e => {
                 console.log(e)
             })
@@ -64,5 +65,15 @@ $(document).ready(function(){
     })
 
 
-    
+    function getterModels(){
+        axios({
+            url: '/modelos',
+            method: 'POST',
+            data: true
+        }).then(data => {
+            console.log(data)
+        }).catch(e => {
+            console.log(e)
+        })
+    }
 })

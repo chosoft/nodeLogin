@@ -1,3 +1,4 @@
+//Modules imports
 const express = require('express')
 const indexRouter = require('./index/index')
 const CantFound = require('./404/404')
@@ -14,7 +15,7 @@ const multer = require('multer')
 const path = require('path')
 
 
-
+//router function for routes
 const router = function(server){
     server.use(session({
         secret: config.adminSecret,

@@ -6,7 +6,7 @@ function comparePass(pass,hash){
         try{
             bcrypt.compare(pass,hash, function(err,result){
                 if(err){
-                    reject(err)
+                    reject(false)
                 }else{
                     if(result === true){
                         resolve(true)

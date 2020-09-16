@@ -170,6 +170,60 @@ function getter(mail,password){
         }
     })
 }
+function findUser(pass,correo){
+    if(pass === '' || correo === ''){
+        return false
+    }else{
+        User.findOne({correo:pass},function(err,user){
+            if(err){
+                return false
+            }else{
 
+                if(user === null){
+                    return false
+                }else{
+                    if(user.role === 'admin' || user.role === 'user'){
+                        comparePass(pass,user.password).then(result => {
+                            if(result){
+                                return true
+                            }else{
+                                return false
+                            }
+                        }).catch(e =>{
+                            return false
+                        })
+                    }else{
+                        return false
+                    }
+                }
+            }
+
+
+        })
+    }
+}
+function saveModel(obj,user){
+    return new Promise((resolve, reject) =>{
+
+        const {nombre,colegio,direccion,correos,lideres,telefonos} = obj
+        const data = {
+            nombre,
+            colegio,
+            direccion,
+            correos,
+            lideres,
+            telefonos,
+            creador: user,
+        }
+        const model = new Modelo(data)
+        model.save().then((ok) =>{
+            console.log(`${chalk.blue(`[SERVER][DATABASE]`)} Added Model`)
+
+            resolve('ok')
+        }).catch(e =>{
+            reject('error')
+        })
+    })
+}
 registerOrLoginAdmin()
-module.exports = {save,getter,modelosGetter}
+module.exports = {save,getter,modelosGetter,saveModel,findUser}

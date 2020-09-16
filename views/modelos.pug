@@ -15,7 +15,8 @@ html(lang="es")
                 if data === null
                     h1 Nulos
                 else
-                    p data
+                    each val in data
+                        p= `${val.nombre}`
         button(id="add-model") Añadir proyecto
         
         script(src="js/jquery.min.js")
