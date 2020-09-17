@@ -7,7 +7,7 @@ router.get('/', (req,res,next)=>{
     if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
         modelosGetter().then(data =>{
             if(data === [] || data.length === 0){
-                res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:false,data:null})
+                res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:true,data:null})
             }else{
                 res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:false,data:data})
             }

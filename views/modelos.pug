@@ -4,20 +4,21 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile
-        link(rel="stylesheet", href="css/perfil.css")
+        link(rel="stylesheet", href="css/modelos.css")
     body
         include layout/navbar.pug 
-        
+        if data === null
+
+        else
+            button(id="add-model") Añadir proyecto
         main
             if error
-                h1 Error
+                include layout/error.pug
             else
                 if data === null
-                    h1 Nulos
+                    include layout/emptyModel.pug
                 else
-                    each val in data
-                        p= `${val.nombre}`
-        button(id="add-model") Añadir proyecto
+                    include layout/modelos.pug
         
         script(src="js/jquery.min.js")
         script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
