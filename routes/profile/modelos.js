@@ -15,8 +15,7 @@ router.get('/', (req,res,next)=>{
             res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:true,data:null})
         })
     }else{
-        res.redirect('/')
-    }
+        res.redirect('/')    }
 })
 router.post('/', (req,res,next) => {
     if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
