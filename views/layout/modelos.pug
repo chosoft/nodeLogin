@@ -1,3 +1,5 @@
+div(class="title-modelos")
+    h1 Modelos
 div(class="wp-modelos")
     each val in data
         div(class="card" idModelo=`${val._id}`)
@@ -6,5 +8,5 @@ div(class="wp-modelos")
             div(class="card-img")
                 img(src="/modelosImg/logo.svg", alt="", srcset="")
             div(class="card-btns")
-                a(href=`/modelos/${val.nombre}` class="link-btn") Ir 
-                button(class="btn-delete" deleterKey=`${val._id}`) Eliminar
+                a(href=`/modelos/${val.nombre}` class="btn link-btn") Ver ahora
+                button(class="btn btn-delete" deleterKey=`${val._id}`) Eliminar

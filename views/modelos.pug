@@ -10,8 +10,9 @@ html(lang="es")
         if data === null
 
         else
-            button(id="add-model") Añadir proyecto
-        main
+            button(id="add-model") 
+                img(src="icons/mas.svg", alt="mas-icon")
+        main(id="mainCont")
             if error
                 include layout/error.pug
             else

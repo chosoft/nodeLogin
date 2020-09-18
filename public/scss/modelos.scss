@@ -139,6 +139,25 @@ header{
         }
     }
 }
+#add-model{
+    position: absolute;
+    cursor: pointer;
+    bottom:35px;
+    right:35px;
+    background: #FEDA3F;
+    padding: 10px;
+    border: 0;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    &:hover{
+        background: #f2cd3c;
+    }
+    img{
+        width: 35px;
+        height: 35px;
+
+    }
+}
 main{
     width: 100%;
     height: auto;
@@ -261,6 +280,89 @@ main{
             }
         }
     }
+    .title-modelos{
+        width: 100%;
+        height: auto;
+        padding: 15px 12px;
+        h1{
+            text-align: center;
+            color: #191919;
+            font-family: $oxygen;
+            font-weight: bold;
+            font-size: 50px;
+        }
+    }
+    .wp-modelos{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        flex-wrap: wrap;
+        padding: 50px;;
+        .card{
+            width:30%;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            .card-header{
+                width: 100%;
+                height: auto;
+                padding: 15px 12px;
+                border-bottom: 1px solid #ccc;
+                h2{
+                    font-family: $oxygen;
+                    color: #191919;
+                    font-weight: bold;
+                    text-align: center;
+                    font-size: 35px;
+                }
+            }
+            .card-img{
+                width: 100%;
+                height: auto;
+                padding: 15px 12px;
+                display: flex;
+                flex-direction: row;
+                justify-content:center;
+                img{
+                    width: 100%;
+                }
+            }
+            .card-btns{
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 20px 12px;
+                border-top: 1px solid #ccc;
+                .btn{
+                    width: 45%;
+                    padding:  12px;
+                    color: #fff;
+                    font-family: $oxygen;
+                    font-weight: bold;
+                    font-size: 22px;
+                    border-radius: 12px;
+                    text-align: center;
+                    border: 0;
+                    transition: all 0.3s ease;
+                }
+                a{
+                    background: #FEDA3F;
+                    text-decoration: none;
+                    &:hover{
+                        background: #f2cd3c;
+                    }
+                }
+                .btn-delete{
+                    cursor:pointer;
+                    background: transparent;
+                    color:#FE0034;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -275,6 +377,15 @@ main{
                         width: 100%;
                     }
                 }
+            }
+        }
+    }
+    main{
+        .wp-modelos{
+            justify-content: center;
+            padding: 10px;;
+            .card{
+                width: 100%;
             }
         }
     }

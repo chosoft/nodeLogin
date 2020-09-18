@@ -139,6 +139,25 @@ header .wp-bottom .nav-links nav a:hover {
   background: #f2cd3c;
 }
 
+#add-model {
+  position: absolute;
+  cursor: pointer;
+  bottom: 35px;
+  right: 35px;
+  background: #FEDA3F;
+  padding: 10px;
+  border: 0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+#add-model:hover {
+  background: #f2cd3c;
+}
+#add-model img {
+  width: 35px;
+  height: 35px;
+}
+
 main {
   width: 100%;
   height: auto;
@@ -258,6 +277,89 @@ main .error .error-img {
 main .error .error-img img {
   width: 45%;
 }
+main .title-modelos {
+  width: 100%;
+  height: auto;
+  padding: 15px 12px;
+}
+main .title-modelos h1 {
+  text-align: center;
+  color: #191919;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+main .wp-modelos {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+main .wp-modelos .card {
+  width: 30%;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+main .wp-modelos .card .card-header {
+  width: 100%;
+  height: auto;
+  padding: 15px 12px;
+  border-bottom: 1px solid #ccc;
+}
+main .wp-modelos .card .card-header h2 {
+  font-family: "Oxygen", sans-serif;
+  color: #191919;
+  font-weight: bold;
+  text-align: center;
+  font-size: 35px;
+}
+main .wp-modelos .card .card-img {
+  width: 100%;
+  height: auto;
+  padding: 15px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .wp-modelos .card .card-img img {
+  width: 100%;
+}
+main .wp-modelos .card .card-btns {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 12px;
+  border-top: 1px solid #ccc;
+}
+main .wp-modelos .card .card-btns .btn {
+  width: 45%;
+  padding: 12px;
+  color: #fff;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 12px;
+  text-align: center;
+  border: 0;
+  transition: all 0.3s ease;
+}
+main .wp-modelos .card .card-btns a {
+  background: #FEDA3F;
+  text-decoration: none;
+}
+main .wp-modelos .card .card-btns a:hover {
+  background: #f2cd3c;
+}
+main .wp-modelos .card .card-btns .btn-delete {
+  cursor: pointer;
+  background: transparent;
+  color: #FE0034;
+}
 
 @media screen and (max-width: 450px) {
   header .wp-bottom .nav-links nav {
@@ -266,6 +368,14 @@ main .error .error-img img {
     justify-content: center;
   }
   header .wp-bottom .nav-links nav a {
+    width: 100%;
+  }
+
+  main .wp-modelos {
+    justify-content: center;
+    padding: 10px;
+  }
+  main .wp-modelos .card {
     width: 100%;
   }
 }

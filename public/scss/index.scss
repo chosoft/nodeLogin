@@ -175,7 +175,7 @@ main{
 }
 @media screen and (max-width:450px){
     main{
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         section{
             width: 100%;
@@ -184,7 +184,6 @@ main{
         }
         .banner{
             height: auto;
-            padding-top: 750px;
             .wp-title{
                 h1{
                     font-size: 35px;
@@ -193,7 +192,9 @@ main{
             }
         }
         .form{
+            
             padding: 10px;
+            padding-top: 700px;
             form{
                 width: 100%;
                 .wp-logo{
