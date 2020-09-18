@@ -12,5 +12,5 @@ const config = {
     adminMail: process.env.ADMIN_MAIL,
     adminSecret: process.env.ADMIN_SECRET
 }
-
+console.log(config)
 module.exports = {config}
