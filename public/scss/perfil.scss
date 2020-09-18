@@ -200,10 +200,17 @@ main{
     }
     main{
         .wp-msg{
-            padding: 10px;
+            padding: 12px;
+            margin-bottom: 25px;
             p{
                 width: 100%;
-                text-align: justify;
+                text-align: center;
+            }
+        }
+        .wp-img{
+            width: 100%;
+            img{
+                width: 95%;
             }
         }
     }

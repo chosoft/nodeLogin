@@ -194,11 +194,18 @@ main .wp-img img {
   }
 
   main .wp-msg {
-    padding: 10px;
+    padding: 12px;
+    margin-bottom: 25px;
   }
   main .wp-msg p {
     width: 100%;
-    text-align: justify;
+    text-align: center;
+  }
+  main .wp-img {
+    width: 100%;
+  }
+  main .wp-img img {
+    width: 95%;
   }
 }
 
