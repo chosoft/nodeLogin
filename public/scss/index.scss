@@ -173,5 +173,10 @@ main{
         }
     }
 }
-
+@media screen and (max-width:450px){
+    main{
+        flex-direction: column;
+        align-items: center;
+    }
+}
 /*  */
