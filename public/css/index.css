@@ -171,6 +171,10 @@ main .form form .link:hover {
 }
 
 @media screen and (max-width: 450px) {
+  #register {
+    padding-top: 50px;
+  }
+
   main {
     flex-direction: column-reverse;
     align-items: center;
