@@ -172,7 +172,7 @@ main .form form .link:hover {
 
 @media screen and (max-width: 450px) {
   #register {
-    padding-top: 50px;
+    padding-top: 80px;
   }
 
   main {
