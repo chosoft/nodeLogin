@@ -161,6 +161,7 @@ main #empty .modelos-title h1 {
   font-family: "Oxygen", sans-serif;
   font-weight: bold;
   font-size: 50px;
+  color: #191919;
 }
 main #empty .modelos-p {
   width: 100%;
@@ -174,6 +175,7 @@ main #empty .modelos-p p {
   height: auto;
   font-family: "Lato", sans-serif;
   font-size: 19px;
+  color: #191919;
   text-align: center;
 }
 main #empty .modelos-btn {
@@ -208,6 +210,53 @@ main #empty .modelos-img {
 }
 main #empty .modelos-img img {
   width: 30%;
+}
+main .error {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main .error .error-title {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 15px 12px;
+}
+main .error .error-title h1 {
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #191919;
+  font-size: 50px;
+}
+main .error .error-p {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+main .error .error-p p {
+  width: auto;
+  height: auto;
+  font-family: "Lato", sans-serif;
+  font-size: 19px;
+  color: #191919;
+}
+main .error .error-img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main .error .error-img img {
+  width: 45%;
 }
 
 @media screen and (max-width: 450px) {
