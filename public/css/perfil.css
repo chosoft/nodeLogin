@@ -58,6 +58,7 @@ header .wp-top nav .wp-btn-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 header .wp-top nav .wp-btn-menu img {
   width: 35px;

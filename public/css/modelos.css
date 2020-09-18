@@ -58,6 +58,7 @@ header .wp-top nav .wp-btn-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 header .wp-top nav .wp-btn-menu img {
   width: 35px;
@@ -139,7 +140,7 @@ header .wp-bottom .nav-links nav a:hover {
   background: #f2cd3c;
 }
 
-#add-model {
+.move {
   position: absolute;
   cursor: pointer;
   bottom: 35px;
@@ -150,10 +151,10 @@ header .wp-bottom .nav-links nav a:hover {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-#add-model:hover {
+.move:hover {
   background: #f2cd3c;
 }
-#add-model img {
+.move img {
   width: 35px;
   height: 35px;
 }
@@ -371,6 +372,9 @@ main .wp-modelos .card .card-btns .btn-delete {
     width: 100%;
   }
 
+  main #empty .modelos-img img {
+    width: 80%;
+  }
   main .wp-modelos {
     justify-content: center;
     padding: 10px;
