@@ -192,6 +192,14 @@ main .wp-img img {
   header .wp-bottom .nav-links nav a {
     width: 100%;
   }
+
+  main .wp-msg {
+    padding: 10px;
+  }
+  main .wp-msg p {
+    width: 100%;
+    text-align: justify;
+  }
 }
 
 /*# sourceMappingURL=perfil.css.map */
