@@ -183,4 +183,15 @@ main .wp-img img {
   width: 80%;
 }
 
+@media screen and (max-width: 450px) {
+  header .wp-bottom .nav-links nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  header .wp-bottom .nav-links nav a {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=perfil.css.map */
