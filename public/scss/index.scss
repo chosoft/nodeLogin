@@ -179,6 +179,39 @@ main{
         align-items: center;
         section{
             width: 100%;
+            min-height: auto;
+            max-height: auto;
+        }
+        .banner{
+            height: auto;
+            padding-top: 600px;
+            .wp-title{
+                h1{
+                    font-size: 35px;
+                    text-align: center;
+                }
+            }
+        }
+        .form{
+            padding: 10px;
+            form{
+                width: 100%;
+                .wp-logo{
+                    padding: 40px;
+                }
+                .wp-inputs{
+                    padding:0;
+                    .wp-passwords{
+                        .wp-toggle{
+                            button{
+                                img{
+                                    height: 35px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -177,6 +177,31 @@ main .form form .link:hover {
   }
   main section {
     width: 100%;
+    min-height: auto;
+    max-height: auto;
+  }
+  main .banner {
+    height: auto;
+    padding-top: 600px;
+  }
+  main .banner .wp-title h1 {
+    font-size: 35px;
+    text-align: center;
+  }
+  main .form {
+    padding: 10px;
+  }
+  main .form form {
+    width: 100%;
+  }
+  main .form form .wp-logo {
+    padding: 40px;
+  }
+  main .form form .wp-inputs {
+    padding: 0;
+  }
+  main .form form .wp-inputs .wp-passwords .wp-toggle button img {
+    height: 35px;
   }
 }
 /*  */
