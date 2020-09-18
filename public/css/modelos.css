@@ -141,7 +141,7 @@ header .wp-bottom .nav-links nav a:hover {
 }
 
 .move {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
   bottom: 35px;
   right: 35px;
