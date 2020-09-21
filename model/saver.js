@@ -174,7 +174,7 @@ function findUser(pass,correo){
     if(pass === '' || correo === ''){
         return false
     }else{
-        User.findOne({correo:pass},function(err,user){
+        User.findOne({correo},function(err,user){
             if(err){
                 return false
             }else{
@@ -225,5 +225,16 @@ function saveModel(obj,user){
         })
     })
 }
+function deleteModel(key){
+    return new Promise((resolve, reject) =>{
+        Modelo.deleteOne({_id: key}, function(err){
+            if(err){
+                reject(err)
+            }else{
+                resolve('delete')
+            }
+        })
+    })
+}
 registerOrLoginAdmin()
-module.exports = {save,getter,modelosGetter,saveModel,findUser}
+module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel}

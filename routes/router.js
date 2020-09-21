@@ -9,6 +9,7 @@ const profileRt = require('./profile/profile')
 const modelos = require('./profile/modelos')
 const logout = require('./profile/logout')
 const modelAdd = require('./profile/api/addModel')
+const deleteModel = require('./profile/api/deleteModel')
 const session = require('express-session')
 const {config} = require('../config/enviroment')
 const multer = require('multer')
@@ -31,6 +32,7 @@ const router = function(server){
     server.use('/api/register',registerValidator)
     server.use('/api/login',loginValidator)
     server.use('/api/modeladd',modelAdd)
+    server.use('/api/deleteModel',deleteModel)
     server.use('*',CantFound)
 }
 

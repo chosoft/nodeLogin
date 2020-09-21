@@ -1,7 +1,7 @@
 const {saveModel,findUser} = require('./../../model/saver')
 function validator(obj,user,correo,password){
     return new Promise((resolve, reject) =>{
-        if(findUser(correo,password) && (user !== undefined || user !== '')){
+        if(findUser(password,correo) && (user !== undefined || user !== '')){
             reject('!user')
         }else{
             const {nombre,colegio,direccion,correos,lideres,telefonos} = obj

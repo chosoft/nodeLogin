@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $('#add-model').click(function(e){
         e.preventDefault();
@@ -215,4 +216,31 @@ $(document).ready(function(){
             console.log(e)
         })
     }
+    $('.btn-delete').click(function(e) {
+        e.preventDefault()
+        let deleterKey = {
+            key: $(this).attr('deleterKey')
+        }
+        Swal.fire({
+            title: 'Estas seguro de borrar este modelo ?',
+            text: "Esta accion no sera reversible",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar"
+        }).then(result => {
+            if (result.isConfirmed){
+                axios({
+                    url: '/api/deleteModel',
+                    method: 'DELETE',
+                    data: deleterKey,
+                }).then(response => {
+                    console.log(response)
+                    getterModels()
+                }).catch(e => console.log(e))
+            }else{
+
+            }
+        })
+    })
 })
