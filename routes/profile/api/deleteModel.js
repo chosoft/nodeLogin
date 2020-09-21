@@ -8,11 +8,9 @@ router.get('/', (req,res,next)=>{
 router.delete('/', (req,res,next)=>{
     if(req.body !== undefined && req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined && req.session.role !== undefined ){
         const {key} = req.body
-        auth(req.session.password, req.session.correo,1,key).then(ok => {
-            delete ok
+        auth(req.session.password, req.session.correo,1,key,null,null).then(ok => {
             res.send('ok')
         }).catch(e => {
-            delete e 
             res.send('error')
         })
     }else{
@@ -21,11 +19,3 @@ router.delete('/', (req,res,next)=>{
 })
 
 module.exports = router
-
-/* const {key} = req.body
-deleteModel(key).then(response => {
-    res.send(response)
-}).catch(err =>{
-    delete err
-    res.send('error')
-}) */

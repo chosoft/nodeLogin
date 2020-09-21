@@ -57,7 +57,6 @@ $(document).ready(function(){
                 method: 'POST',
                 data,
             }).then(ok => {
-                console.log(ok)
                if(ok.data === 'fail'){
                 Swal.fire({
                     title: "Error",
@@ -67,13 +66,14 @@ $(document).ready(function(){
                 })
                }
                else{
+                getterModels()
+
                 Swal.fire({
                     title: "Bien hecho",
                     text: "Se ha añadido el modelo correctamente",
                     icon: "success",
                     confirmButtonText: "Ok"
                 })
-                getterModels()
                }
             }).catch(e => {
                 Swal.fire({
@@ -83,7 +83,7 @@ $(document).ready(function(){
                     confirmButtonText: "Ok"
                 })
             })
-        })
+        }).catch(e => console.log(e))
     })
     $('#add-model2').click(function(e){
         e.preventDefault();
@@ -151,13 +151,13 @@ $(document).ready(function(){
                 })
                }
                else{
+                   getterModels()
                 Swal.fire({
                     title: "Bien hecho",
                     text: "Se ha añadido el modelo correctamente",
                     icon: "success",
                     confirmButtonText: "Ok"
                 })
-                getterModels()
                }
             }).catch(e => {
                 Swal.fire({
@@ -167,6 +167,34 @@ $(document).ready(function(){
                     confirmButtonText: "Ok"
                 })
             })
+        }).catch(e => console.log(e))
+    })
+    $('.btn-delete').click(function(e) {
+        console.log('click')
+        e.preventDefault()
+        let deleterKey = {
+            key: $(this).attr('deleterKey')
+        }
+        Swal.fire({
+            title: 'Estas seguro de borrar este modelo ?',
+            text: "Esta accion no sera reversible",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar"
+        }).then(result => {
+            if (result.isConfirmed){
+                axios({
+                    url: '/api/deleteModel',
+                    method: 'DELETE',
+                    data: deleterKey,
+                }).then(response => {
+                    console.log('a')
+                    getterModels()
+                }).catch(e => console.log(e))
+            }else{
+
+            }
         })
     })
     function getterModels(){
@@ -175,6 +203,7 @@ $(document).ready(function(){
             method: 'POST',
             data: true
         }).then(ok => {
+            console.log(ok)
             if(Array.isArray(ok.data) && ok.data.length > 0){
                 let data = ok.data
                 let template = ``
@@ -206,42 +235,10 @@ $(document).ready(function(){
                 });
                 $('#md').html(template);
             }else{
-                Swal.fire({
-                    title: "Error",
-                    text: "Ha ocurrido un error inesperado al momento de traer los datos actualizados actualize la pagina",
-                    icon: "error",
-                    confirmButtonText: "Ok"
-                })
+                location.reload()
             }
         }).catch(e => {
             console.log(e)
         })
     }
-    $('.btn-delete').click(function(e) {
-        e.preventDefault()
-        let deleterKey = {
-            key: $(this).attr('deleterKey')
-        }
-        Swal.fire({
-            title: 'Estas seguro de borrar este modelo ?',
-            text: "Esta accion no sera reversible",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Eliminar",
-            cancelButtonText: "Cancelar"
-        }).then(result => {
-            if (result.isConfirmed){
-                axios({
-                    url: '/api/deleteModel',
-                    method: 'DELETE',
-                    data: deleterKey,
-                }).then(response => {
-                    console.log(response)
-                    getterModels()
-                }).catch(e => console.log(e))
-            }else{
-
-            }
-        })
-    })
 })
