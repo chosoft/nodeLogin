@@ -293,7 +293,7 @@ main .title-modelos h1 {
 main .wp-modelos {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 50px;

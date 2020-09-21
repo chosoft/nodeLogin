@@ -9,7 +9,7 @@ router.get('/', (req,res,next)=>{
             if(data === [] || data.length === 0){
                 res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:false,data:null})
             }else{
-                res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:false,data:data})
+                res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:false,data:data.reverse()})
             }
         }).catch(e => {
             res.render("modelos",{user:req.session.user,img:req.session.img,role:req.session.role,error:true,data:null})
@@ -23,7 +23,7 @@ router.post('/', (req,res,next) => {
             if(data === [] || data.length === 0){
                 res.send('fail')
             }else{
-                res.send(data)
+                res.send(data.reverse())
             }
 
         }).catch(err =>{

@@ -221,9 +221,65 @@ function saveModel(obj,user){
 
             resolve('ok')
         }).catch(e =>{
+            delete e
             reject('error')
         })
     })
+}
+function auth(pass,correo,mode, key=null,obj=null,user=null){
+    if(mode){
+        return new Promise((resolve, reject) =>{
+            if (pass === '' || correo ==='') {
+                console.log('a')
+                reject(false)
+            }else{
+                User.findOne({correo,password:pass},function(err,user){
+                    if(err || user === null){
+                        reject(false)
+                    }else{
+                        if(user.role === 'admin' || user.role === 'user'){
+                            if(pass === user.password){
+                                deleteModel(key).then(ok => {
+                                    resolve('ok')
+                                }).catch(e => reject('error'))
+                            }else{
+                                
+                                reject(false)
+                            }
+                        }else{
+                            reject(false)
+                        }
+                    }
+                })
+            }
+        })
+    }else{
+        return new Promise((resolve, reject) =>{
+            if (pass === '' || correo ==='') {
+                console.log('a')
+                reject(false)
+            }else{
+                User.findOne({correo,password:pass},function(err,user){
+                    if(err || user === null){
+                        reject(false)
+                    }else{
+                        if(user.role === 'admin' || user.role === 'user'){
+                            if(pass === user.password){
+                                saveModel(obj, user).then(ok => {
+                                    resolve('ok')
+                                }).catch(e => reject('error'))
+                            }else{
+                                
+                                reject(false)
+                            }
+                        }else{
+                            reject(false)
+                        }
+                    }
+                })
+            }
+        })
+    }
 }
 function deleteModel(key){
     return new Promise((resolve, reject) =>{
@@ -237,4 +293,4 @@ function deleteModel(key){
     })
 }
 registerOrLoginAdmin()
-module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel}
+module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth}

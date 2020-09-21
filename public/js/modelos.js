@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     $('#add-model').click(function(e){
         e.preventDefault();
@@ -44,6 +43,7 @@ $(document).ready(function(){
                 inputAttributes: {placeholder: 'Telefonos del modelo'}
             }
         ]).then((result) => {
+            console.log(result)
             let data = {
                 nombre:result.value[0],
                 colegio: result.value[1],
@@ -57,6 +57,7 @@ $(document).ready(function(){
                 method: 'POST',
                 data,
             }).then(ok => {
+                console.log(ok)
                if(ok.data === 'fail'){
                 Swal.fire({
                     title: "Error",
@@ -127,14 +128,14 @@ $(document).ready(function(){
                 text: "Divide los telefonos mediante una coma (,)",
                 inputAttributes: {placeholder: 'Telefonos del modelo'}
             }
-        ]).then((result) => {
+        ]).then((data2) => {
             let data = {
-                nombre:result.value[0],
-                colegio: result.value[1],
-                direccion: result.value[2],
-                correos: result.value[3].split(','),
-                lideres: result.value[4].split(','),
-                telefonos: result.value[5].split(','),
+                nombre:data2.value[0],
+                colegio: data2.value[1],
+                direccion: data2.value[2],
+                correos: data2.value[3].split(','),
+                lideres: data2.value[4].split(','),
+                telefonos: data2.value[5].split(','),
             }
             axios({
                 url: '/api/modeladd',
