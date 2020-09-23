@@ -302,6 +302,7 @@ main .wp-modelos .card {
   width: 30%;
   border: 1px solid #ccc;
   border-radius: 12px;
+  margin-bottom: 20px;
 }
 main .wp-modelos .card .card-header {
   width: 100%;
