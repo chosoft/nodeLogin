@@ -128,14 +128,15 @@ $(document).ready(function(){
                 text: "Divide los telefonos mediante una coma (,)",
                 inputAttributes: {placeholder: 'Telefonos del modelo'}
             }
-        ]).then((data2) => {
+        ]).then((result) => {
+            console.log(result)
             let data = {
-                nombre:data2.value[0],
-                colegio: data2.value[1],
-                direccion: data2.value[2],
-                correos: data2.value[3].split(','),
-                lideres: data2.value[4].split(','),
-                telefonos: data2.value[5].split(','),
+                nombre:result.value[0],
+                colegio: result.value[1],
+                direccion: result.value[2],
+                correos: result.value[3].split(','),
+                lideres: result.value[4].split(','),
+                telefonos: result.value[5].split(','),
             }
             axios({
                 url: '/api/modeladd',
@@ -151,7 +152,8 @@ $(document).ready(function(){
                 })
                }
                else{
-                   getterModels()
+                getterModels()
+
                 Swal.fire({
                     title: "Bien hecho",
                     text: "Se ha añadido el modelo correctamente",
@@ -169,76 +171,83 @@ $(document).ready(function(){
             })
         }).catch(e => console.log(e))
     })
-    $('.btn-delete').click(function(e) {
-        console.log('click')
-        e.preventDefault()
-        let deleterKey = {
+
+    $('.btn-delete').click(function(e){
+        e.preventDefault(e)
+        const key = {
             key: $(this).attr('deleterKey')
         }
         Swal.fire({
-            title: 'Estas seguro de borrar este modelo ?',
-            text: "Esta accion no sera reversible",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Eliminar",
-            cancelButtonText: "Cancelar"
-        }).then(result => {
-            if (result.isConfirmed){
-                axios({
-                    url: '/api/deleteModel',
-                    method: 'DELETE',
-                    data: deleterKey,
-                }).then(response => {
-                    console.log('a')
-                    getterModels()
-                }).catch(e => console.log(e))
-            }else{
-
-            }
+            title: 'Estas seguro de eliminar este modelo ?',
+            text: 'Esta accion no sera reversible',
+            
         })
     })
     function getterModels(){
         axios({
             url: '/modelos',
             method: 'POST',
-            data: true
-        }).then(ok => {
-            console.log(ok)
-            if(Array.isArray(ok.data) && ok.data.length > 0){
-                let data = ok.data
-                let template = ``
+            data: true,
+        })
+        .then(resultado => {
+            const modelos = resultado.data
+            if(modelos === 'fail'){
+                console.log('fail')
+            }else if(modelos === 'empty'){
                 $('#mainCont').empty()
-                $('#mainCont').html(`
-                <div class="title-modelos">
-                    <h1>Modelos</h1>
-                </div>
-                <div class="wp-modelos" id="md">
-                    
-                </div>
-                `) 
-                data.forEach(element => {
+
+                let template = `<div class="modelos" id="empty">
+                                    <div class="modelos-title">
+                                        <h1>Modelos</h1>
+                                    </div>
+                                    <div class="modelos-p">
+                                        <p>Aun no tienes modelos agregados agrega uno dando click aqui abajo</p>
+                                    </div>
+                                    <div class="modelos-btn">
+                                        <button id="add-model2">Añadir modelo</button>
+                                    </div>
+                                    <div class="modelos-img">
+                                        <img src="icons/empty.svg" alt="empty-draw">
+                                    </div>
+                                </div>`
+                $('#mainCont').html(template)
+            }else if(Array.isArray(modelos) && modelos.length > 0){
+                $('#mainCont').empty()
+                let mockup = `<div class="title-modelos">
+                                <h1>Modelos</h1>
+                              </div>
+                            <div class="wp-modelos" id="md">
+                
+                            </div>`
+
+                $('#mainCont').html(mockup)
+                let template = ''
+                modelos.forEach(element => {
                     template += `
                     <div class="card" idModelo="${element._id}">
                         <div class="card-header">
                             <h2>${element.nombre}</h2>
                         </div>
                         <div class="card-img">
-                            <img src="${element.img}", alt="${element.nombre}-img">
+                            <img src="/modelosImg/logo.svg" alt="logo-modelo">
                         </div>
                         <div class="card-btns">
-                            <a href="/modelos/${element.nombre}" class="btn link-btn">Ver ahora</a>
+                            <a href="/modelos/${element.nombre}" class="btn link-btn">Ver ahora </a>
                             <button class="btn btn-delete" deleterKey="${element._id}">Eliminar</button>
                         </div>
                     </div>
                     
                     `
-                });
-                $('#md').html(template);
+                    $('#md').html(template)
+                $.getScript('js/modelos.js')
+
+                })
+
             }else{
-                location.reload()
+                console.log(error)
             }
-        }).catch(e => {
-            console.log(e)
         })
+        .catch(e => console.log(e))
     }
+    
 })

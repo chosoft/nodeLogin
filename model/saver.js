@@ -1,12 +1,15 @@
+//Librerias y utilidades
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {config} = require('../config/enviroment')
 const chalk = require('chalk')
 const bcrypt = require('bcrypt')
 const {comparePass,compareAdmin} = require('../api/compare')
+//conecxion a mongo
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
     console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
 })
+//Esquema de modelos 
 const modelosSchema = new Schema({
     nombre: String,
     colegio: String,
@@ -20,6 +23,7 @@ const modelosSchema = new Schema({
 })
 const Modelo = mongoose.model('Modelo',modelosSchema)
 
+//Esquema de Usuarios
 const userSchema = new Schema({
     user: String ,
     password: String,
@@ -31,6 +35,7 @@ const userSchema = new Schema({
 })
 const User = mongoose.model('User',userSchema)
 
+//Esquema de Administradores
 const adminSchema = new Schema({
     adminUser: {type:String,required:true},
     adminPassword: {type:String,required:true},
@@ -39,7 +44,9 @@ const adminSchema = new Schema({
 })
 const Admin = mongoose.model('Admin',adminSchema)
 
+//funcion para loguear admin
 function registerOrLoginAdmin(){
+    //Buscar si admin ya esta registrado
     Admin.findOne({adminMail: config.adminMail}, function(err,user){
         if(err){
             console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error has been at the momento to login the admin ${chalk.red(err)}`)
@@ -91,7 +98,7 @@ function registerOrLoginAdmin(){
         }
     })
 }
-
+//funcion para guardar usuario
 function save(data){
     return new Promise((resolve, reject) =>{
         findMail(data[2]).then(ok =>{
@@ -108,7 +115,7 @@ function save(data){
         }).catch(e => {reject(e)})
     })
 }
-
+//funcion para buscar mail 
 function findMail(mail){
     return new Promise((resolve, reject) =>{
         try {
@@ -128,6 +135,7 @@ function findMail(mail){
         }
     })
 }
+//funcion para obtener los modelos registras en la db
 function modelosGetter(){
     return new Promise((resolve, reject) =>{
         try {
@@ -143,6 +151,7 @@ function modelosGetter(){
         }
     })
 }
+//funcion para obtener usuario 
 function getter(mail,password){
     return new Promise((resolve, reject) =>{
         try {
@@ -170,6 +179,7 @@ function getter(mail,password){
         }
     })
 }
+//funcion para encontrar usuario en la db
 function findUser(pass,correo){
     if(pass === '' || correo === ''){
         return false
@@ -202,6 +212,7 @@ function findUser(pass,correo){
         })
     }
 }
+//funcion para guardar los modelos
 function saveModel(obj,user){
     return new Promise((resolve, reject) =>{
 
@@ -226,7 +237,9 @@ function saveModel(obj,user){
         })
     })
 }
+//funcion para autenticar y elegir accion CD De la bd
 function auth(pass,correo,mode, key=null,obj=null,user=null){
+    const creator = user
     if(mode){
         return new Promise((resolve, reject) =>{
             if (pass === '' || correo ==='') {
@@ -265,7 +278,7 @@ function auth(pass,correo,mode, key=null,obj=null,user=null){
                     }else{
                         if(user.role === 'admin' || user.role === 'user'){
                             if(pass === user.password){
-                                saveModel(obj, user).then(ok => {
+                                saveModel(obj, creator).then(ok => {
                                     resolve('ok')
                                 }).catch(e => reject('error'))
                             }else{
@@ -281,6 +294,7 @@ function auth(pass,correo,mode, key=null,obj=null,user=null){
         })
     }
 }
+//Funcion para Eliminar Modelo
 function deleteModel(key){
     return new Promise((resolve, reject) =>{
         Modelo.deleteOne({_id: key}, function(err){
@@ -292,5 +306,7 @@ function deleteModel(key){
         })
     })
 }
+
+
 registerOrLoginAdmin()
 module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth}

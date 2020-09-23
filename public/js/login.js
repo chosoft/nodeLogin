@@ -67,7 +67,7 @@ $(document).ready(function() {
                     text: "Ha ocurrido un efdsrror interno",
                     confirmButtonText: "Ok"
                 })
-            }).fail(e => console.log(e))
+            })
         }else{
             Swal.fire({
                 title: 'Campos Vacios!',

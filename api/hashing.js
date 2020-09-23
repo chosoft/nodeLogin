@@ -1,10 +1,15 @@
+//libraries and utils
 const bcrypt = require('bcrypt')
 const {save} = require('./../model/saver')
 
+
+//funcion para hashear el password y almacenarlo
 function hasher(saltRounds,obj){
     return new Promise((resolve, reject) => {
-        let {userName,password,correo} = obj
+        let {userName,password,correo} = obj//JSON Data verified
+
         let arrayToHash = [userName,password,correo]
+        
         let arrayHashing = []
         try{
                 bcrypt.genSalt(saltRounds,function(err,salt){

@@ -6,7 +6,7 @@ div(class="wp-modelos" id="md")
             div(class="card-header")
                 h2= val.nombre
             div(class="card-img")
-                img(src="/modelosImg/logo.svg", alt="", srcset="")
+                img(src="/modelosImg/logo.svg", alt="logo-modelo", srcset="")
             div(class="card-btns")
                 a(href=`/modelos/${val.nombre}` class="btn link-btn") Ver ahora
                 button(class="btn btn-delete" deleterKey=`${val._id}`) Eliminar

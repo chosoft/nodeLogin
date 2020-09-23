@@ -21,7 +21,7 @@ router.post('/', (req,res,next) => {
     if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
         modelosGetter().then(data => {
             if(data === [] || data.length === 0){
-                res.send('fail')
+                res.send('empty')
             }else{
                 res.send(data.reverse())
             }

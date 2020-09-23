@@ -14,6 +14,7 @@ function validator(obj,user,correo,password){
                         auth(password,correo,0,0,obj,user).then(ok => {
                             resolve('ok')
                         }).catch(e => {
+                            console.log(e)
                             delete e
                             reject('error')
                         })
