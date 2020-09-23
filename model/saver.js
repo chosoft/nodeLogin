@@ -307,6 +307,17 @@ function deleteModel(key){
     })
 }
 
+function getModelPage(id){
+    return new Promise((resolve, reject) =>{
+        Modelo.findById(id, function(err, model){
+            if(err || model === null){
+                reject('error')
+            }else{
+                
+            }
+        })
+    })
+}
 
 registerOrLoginAdmin()
 module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth}

@@ -17,6 +17,13 @@ router.get('/', (req,res,next)=>{
     }else{
         res.redirect('/')    }
 })
+router.get('/:id', (req,res,next) => {
+    if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
+        
+    }else{
+        res.redirect('/')
+    }
+})
 router.post('/', (req,res,next) => {
     if(req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined){
         modelosGetter().then(data => {

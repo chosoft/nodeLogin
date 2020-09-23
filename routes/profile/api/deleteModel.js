@@ -9,7 +9,6 @@ router.get('/', (req,res,next)=>{
 })
 
 router.delete('/', (req,res,next)=>{
-    console.log('pe')
     //verifico si las cookies de seccion estan seteadas
     if(req.body !== undefined && req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined && req.session.role !== undefined ){
         //uso la funcion auth para 
