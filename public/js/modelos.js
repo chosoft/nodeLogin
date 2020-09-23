@@ -180,7 +180,24 @@ $(document).ready(function(){
         Swal.fire({
             title: 'Estas seguro de eliminar este modelo ?',
             text: 'Esta accion no sera reversible',
-            
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then(result => {
+            if(result.isConfirmed){
+                axios({
+                    url: '/api/deleteModel',
+                    method: 'DELETE',
+                    data: key
+                })
+                .then(result => {
+                    getterModels()
+                })
+                .catch(e => console.log(e))
+            }else{
+
+            }
         })
     })
     function getterModels(){
