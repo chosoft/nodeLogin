@@ -307,17 +307,46 @@ function deleteModel(key){
     })
 }
 
-function getModelPage(id){
+function getModelPage(nombre,correo,password){
     return new Promise((resolve, reject) =>{
-        Modelo.findById(id, function(err, model){
-            if(err || model === null){
-                reject('error')
+        permsAuth(correo,password).then(ok => {
+            if(ok){
+                Modelo.findOne({nombre}, function(err, model){
+                    if(err || model === null){
+                        reject('error')
+                    }else{
+                        resolve(model)
+                    }
+                })
             }else{
-                
+                delete ok
+                reject('error')
             }
+        }).catch(e => {
+            delete e
+            reject('error')
         })
     })
 }
-
+function permsAuth(correo,password){
+    return new Promise((resolve, reject) =>{
+        if(correo === '' || password ===''){
+            reject(false)
+        }else{
+            User.findOne({correo,password}, function(err,user){
+                if(err || user === null ){
+                    delete err
+                }else{
+                    if(user.role === 'admin'||user.role === 'user'){ 
+                        delete user
+                        resolve(true)
+                    }else{
+                        reject(false)
+                    }
+                }
+            })
+        }
+    })
+}
 registerOrLoginAdmin()
-module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth}
+module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth,getModelPage}
