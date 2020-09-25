@@ -1,0 +1,51 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Profile
+        link(rel="stylesheet", href="css/modelos.css")
+    body
+        include layout/navbar.pug 
+
+        main(id="mainModel")
+            section(class="title-model-wp")
+                h1= data.nombre
+            section(class="img-model-wp")
+                div(class="wp-all-img" id="changer")
+                    img(src=`${data.img}`, alt="img-model")
+                    div(class="wp-icon-changer")
+                        img(src="icons/edit.svg", alt="edit-icon")
+
+        section(class="wp-all-cont")
+            section(class="wp-datos")
+
+                div(class="card-datos" id="colegio")
+                    img(src="/icons/school.svg", alt="school-icon")
+                    span= data.colegio
+
+                div(class="card-datos" id="direccion")
+                    img(src="/icons/pin.svg", alt="pin-icon")
+                    span= data.direccion
+
+                div(class="card-datos" id="date")
+                    img(src="/icons/calendario.svg", alt="date-icon")
+                    span= data.dataRegistered
+
+                div(class="card-datos" id="creador")
+                    img(src="/icons/pluma.svg", alt="creador-icon")
+                    span= data.creator
+            
+            section(class="wp-lideres")
+                each val,index in data.correos
+                    div(class="card-lider")
+
+
+
+            
+        script(src="js/jquery.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(src="js/perfil.js")
+        script(src="js/modelo.js")
+
