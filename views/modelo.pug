@@ -38,7 +38,13 @@ html(lang="es")
             
             section(class="wp-lideres")
                 each val,index in data.correos
-                    div(class="card-lider")
+                    div(class="card-lider" modeloId=`${data._id}` liderCard=`${data.lideres[index]}`)
+                        div(class="wp-user-thumnail")
+                            img(src="", alt="user-thumbnail")
+                        div(class="wp-info-lider")
+                            span(class="nombre-lider")= data.lideres[index]
+                            span(class="correo-lider")= val
+                            span(class="telefono-lider")= data.telefonos[index]
 
 
 
