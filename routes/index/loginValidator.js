@@ -6,18 +6,14 @@ router.get('/', (req,res,next)=>{
     res.redirect('/')
 })
 router.post('/', (req,res,next)=>{
-    validator(req.body).then(ok => {
-        if(Array.isArray(ok)){
-            req.session.password = ok[1]
-            req.session.correo = ok[2]
-            req.session.user = ok[3]
-            req.session.role = ok[4]
-            req.session.img = ok[5]
-            res.send(ok[0])
+    validator(req.body).then(id => {
+        if(id === '' || id === undefined || id === null){
+            res.send('error')
         }else{
-            res.send(ok)
+            req.session.idUserLogged = id
+            res.send('ok')
         }
-    }).catch(e => res.status(500))
+    }).catch(e => res.send(e))
 })
 
 module.exports = router

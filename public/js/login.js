@@ -47,7 +47,7 @@ $(document).ready(function() {
                             confirmButtonText: "Ok"
                         })
                         setTimeout(function () {
-                            location.href = '/profile'
+                            location.href = '/home'
                         },1000)
                         break
                     default:

@@ -1,12 +1,5 @@
-const express = require('express')
-const router = express.Router()
+function managerFound(req,res,next) {
+    res.render('404')
+}
 
-router.get('/', (req,res,next)=>{
-    res.status(404)
-    res.render('404')
-})
-router.post('/', (req,res,next)=>{
-    res.status(400)
-    res.render('404')
-})
-module.exports = router
+module.exports = managerFound

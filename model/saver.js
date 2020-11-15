@@ -2,12 +2,11 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const {config} = require('../config/enviroment')
-const chalk = require('chalk')
 const bcrypt = require('bcrypt')
 const {comparePass,compareAdmin} = require('../api/compare')
 //conecxion a mongo
 mongoose.connect(`mongodb+srv://${config.dbUser}:${config.dbPass}@${config.dbHost}${config.dbName}?retryWrites=true&w=majority`,{useNewUrlParser: true, useUnifiedTopology: true},()=>{
-    console.log(`${chalk.blue(`[SERVER][DATABASE]`)}The database is connect`)
+    console.log(`[SERVER][DATABASE]The database is connect`)
 })
 //Esquema de modelos 
 const modelosSchema = new Schema({
@@ -65,7 +64,7 @@ function registerOrLoginAdmin(){
                     }
                     bcrypt.hash(dataAdmin.adminPassword,salt,function(err,hash){
                         if (err){
-                            console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} A error occurred`)  
+                            console.log(`[SERVER][DATABASE][ADMIN] A error occurred`)  
                         }else{
                             const newData = {
                                 adminUser: dataAdmin.adminUser,
@@ -77,11 +76,11 @@ function registerOrLoginAdmin(){
                                 const admin = new Admin(newData)
 
                                 admin.save().then((ok) => {
-                                    console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Created admin`)
+                                    console.log(`[SERVER][DATABASE][ADMIN] Created admin`)
                                 }).catch(e => console.log(e))
                                 
                             } catch (error) {
-                                console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)}A error occurred`)
+                                console.log(`[SERVER][DATABASE][ADMIN] A error occurred`)
                             }
                         }
                     })
@@ -89,15 +88,17 @@ function registerOrLoginAdmin(){
             }else{
                 compareAdmin(config.adminPassword,user.adminPassword).then(ok =>{
                     if(ok){
-                        console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Good login of a admin`)
+                        console.log(`[SERVER][DATABASE][ADMIN] Good login of a admin`)
                     }else{
-                        console.log(`${chalk.blue(`[SERVER][DATABASE][ADMIN]`)} Bad login of a admin`)
+                        console.log(`[SERVER][DATABASE][ADMIN] Bad login of a admin`)
                     }
                 }).catch(e => console.log(e))
             }
         }
     })
 }
+
+
 //funcion para guardar usuario
 function save(data){
     return new Promise((resolve, reject) =>{
@@ -109,9 +110,9 @@ function save(data){
             }
             const user = new User(dataSend)
             user.save().then(res => {
-                console.log(`${chalk.blue(`[SERVER][DATABASE]`)} Added user`)
+                console.log(`[SERVER][DATABASE] Added user`)
                 resolve('ok')
-            }).catch(err => reject(chalk.red(err)))
+            }).catch(err => reject(err))
         }).catch(e => {reject(e)})
     })
 }
@@ -151,7 +152,7 @@ function modelosGetter(){
         }
     })
 }
-//funcion para obtener usuario 
+//funcion para obtener id Usuario 
 function getter(mail,password){
     return new Promise((resolve, reject) =>{
         try {
@@ -160,14 +161,14 @@ function getter(mail,password){
                     reject(err)
                 }else{
                     if(user === null){
-                        resolve('!found')
+                        reject('!found')
 
                     }else{
                         comparePass(password,user.password).then(dat =>{
                             if(dat === true){
-                                resolve(['ok',user.password,user.correo,user.user,user.role,user.img])
+                                resolve([user._id])
                             }else{
-                                resolve('!fail')
+                                reject('!fail')
                             }
                         }).catch(err => reject(err))
                     }
@@ -175,6 +176,26 @@ function getter(mail,password){
             })
             
         }catch(e){
+            reject(e)
+        }
+    })
+}
+//funcion para verificar id y devolver userInfo
+function authId(id){
+    return new Promise((resolve, reject) =>{
+        try {
+            if(id === undefined || id === null || id ===''){
+                reject('error')
+            }else{
+                User.findById(id,function(err,doc){
+                    if(err || doc === null){
+                        reject('errorFindUser')
+                    }else{
+                        resolve([doc.img,doc.user,doc.correo,doc.role])
+                    }
+                })
+            }
+        } catch (e) {
             reject(e)
         }
     })
@@ -228,7 +249,7 @@ function saveModel(obj,user){
         }
         const model = new Modelo(data)
         model.save().then((ok) =>{
-            console.log(`${chalk.blue(`[SERVER][DATABASE]`)} Added Model`)
+            console.log(`[SERVER][DATABASE] Added Model`)
 
             resolve('ok')
         }).catch(e =>{
@@ -349,4 +370,4 @@ function permsAuth(correo,password){
     })
 }
 registerOrLoginAdmin()
-module.exports = {save,getter,modelosGetter,saveModel,findUser,deleteModel,auth,getModelPage}
+module.exports = {save,authId,getter,modelosGetter,saveModel,findUser,deleteModel,auth,getModelPage}

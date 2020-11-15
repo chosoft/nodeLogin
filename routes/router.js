@@ -26,14 +26,14 @@ const router = function(server){
     }))
     server.use('/',indexRouter)
     server.use('/register',registerView)
-    server.use('/profile',profileRt)
+    server.use('/home',profileRt)
     server.use('/modelos',modelos)
     server.use('/logout',logout)
     server.use('/api/register',registerValidator)
     server.use('/api/login',loginValidator)
     server.use('/api/modeladd',modelAdd)
     server.use('/api/deleteModel',deleteModel)
-    server.use('*',CantFound)
+    server.use(CantFound)
 }
 
 module.exports = router

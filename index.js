@@ -1,7 +1,6 @@
 //Modules imports
 const express = require('express')
 const router = require('./routes/router')
-const chalk = require('chalk')
 const path = require('path')
 const bodyParser = require('body-parser')
 const {config} = require('./config/enviroment')
@@ -23,8 +22,8 @@ app.use(bodyParser.json())
 router(app)
 
 app.listen(config.port,()=>{
-    console.log(`${chalk.blue(`[SERVER]`)} The server is listening on http://localhost:${config.port}`)
-    console.log(`${chalk.blue(`[SERVER][ENV]`)} The Server is in ${chalk.blue(config.env.toUpperCase())} enviroment`)
+    console.log(`[SERVER] The server is listening on http://localhost:${config.port}`)
+    console.log(`[SERVER][ENV] The Server is in ${config.env.toUpperCase()} enviroment`)
 })
 
 

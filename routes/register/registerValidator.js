@@ -2,9 +2,7 @@ const express = require('express')
 const router = express.Router()
 const verificator = require('./../../utils/middlewares/verficationRegisterApi')
 const {config} = require('./../../config/enviroment')
-router.get('/', (req,res,next)=>{
-    res.redirect('/register')
-})
+
 router.post('/', (req,res,next)=>{
     verificator(req.body).then(data =>{
         res.status(200).send(data)

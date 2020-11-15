@@ -1,5 +1,4 @@
 const hasher = require('./../../api/hashing')
-const chalk = require('chalk')
 function verificator(obj){
     return new Promise((resolve, reject) =>{
         let {userName,password,passwordConfirm,correo} = obj
@@ -10,7 +9,7 @@ function verificator(obj){
         if((userName.length >= 3 && userName.length <=20)){
             if((password.search(array[0]) > -1)&& (password.search(array[1]) > -1) && (password.search(array[2]) > -1) && (password.length >= 12 && password.length <=25)){
                 if(password === passwordConfirm){
-                    console.log(`${chalk.blue(`[SERVER][VERIFICATOR-API]`)}Successful`)
+                    console.log(`[SERVER][VERIFICATOR-API] Successful`)
                     const salt = Math.floor(Math.random() * 10)
                     hasher(salt,{userName,password,correo}).then(res =>{
                         resolve(res)

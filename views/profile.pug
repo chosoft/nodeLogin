@@ -4,22 +4,16 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile
-        link(rel="stylesheet", href="css/perfil.css")
+        link(rel="stylesheet", href="/css/perfil.css")
         link(href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet")
         link(href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet")
     body
-        - var bold = "<strong>MUNCA</strong>"
-        include layout/navbar.pug 
-        main
-            div(class="wp-title")
-                h1 Bienvenido
-            div(class="wp-msg")
-                p Bienvenido a la plataforma del proyecto de naciones unidas del colegio americano !{bold} si tienes algun problema por favor contactanos
-            div(class="wp-img")
-                img(src="icons/welcome.svg", alt="welcome image")
-
-
+        div(class="wp-division")
+            include layout/navbar.pug
+            main
+                include layout/barUp.pug
         script(src="js/jquery.min.js")
+        script(src="https://unpkg.com/@popperjs/core@2")
         script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
         script(src="js/perfil.js")

@@ -10,209 +10,109 @@ body{
     margin:0;
     font-family: $oxygen;
     font-size: 18px;
+    background: #f2f2f2
 }
 
-header{
-    width: 100%;
+.wp-division{
+    width:100%;
     height: auto;
     display: flex;
-    background: #FEDA3F;
-    flex-direction: column;
-    .wp-top{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        nav{
+    flex-direction:row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    aside{
+        width: 3%;
+        height: 100vh;
+        background: #282C36;
+        position: fixed;
+        .wp-logoCl{
             width: 100%;
-            height: auto;
+            height: 6vh;
+            padding: 2px;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;     
-            padding: 15px 12px;
-            .wp-profile{
-                width: auto;
-                height: auto;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                img{
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 50%;
-                }
-                span{
-                    color: #fff;
-                    font-family: $oxygen;
-                    font-weight: bold;
-                    text-transform: capitalize;
-                    margin-left: 10px;
-                }
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            background: #FED83F;
+            margin-bottom: 10px;
+            img{
+                width: 70px;
             }
-            .wp-btn-menu{
-                width:auto;
-                height:auto;
-                display: flex;
-                flex-direction: row;
+        }
+        .wp-navbar{
+            width: 100%;
+            height: 86vh;
+            nav{
+                width: 100%;
+                height: 100%;
+                display:flex;
+                flex-direction: column;
                 align-items: center;
-                cursor: pointer;
+                a{
+                    margin-bottom: 40px;
+                    padding: 10px;
+                    img{
+                        width: 35px;
+                    }
+                    
+                }
+
+            }
+        }
+        .wp-logout{
+            width: 100%;
+            height: 10vh;
+            background: #40434C;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items: center;
+            a{
+                margin-top: -25px;
                 img{
                     width:35px;
                 }
             }
         }
     }
-    .wp-bottom{
-        width:0;
+    .wp-suplied{
+        width:3%;
+    }
+    main{
+        width: 97%;
         height: auto;
-        display: none;
-        transition: all 0.3s ease;
-        .wp-title{
+        display: flex;
+        flex-direction: column;
+        header{
             width: 100%;
-            height: auto;
-            padding: 15px 12px;
-            text-align: center;
-            h2{
-                color: #fff;
-                font-family: $oxygen;
-                font-weight: bold;
-                font-size: 50px;
-            }
-        }
-        .middle-bar{
-            width:100%;
-            height: auto;
+            height: 6vh;
             display: flex;
             flex-direction: row;
-            justify-content: center;
-            .bar{
-                height: 5px;
-                width: 80%;
-                background: #fff;
-                border-radius: 5px;
-            }
-        }
-        .nav-links{
-            width:100%;
-            height: auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            nav{
-                width: 80%;
+            justify-content: right;
+            align-items: center;
+            background: #ffffff;
+            padding:12px 15px ;
+            .wp-userInfo{
+                width: auto;
                 height: auto;
                 display: flex;
                 flex-direction: row;
-                justify-content:space-between;
-                flex-wrap: wrap;
-                margin-top: 20px;
-                margin-bottom: 20px;;
-                a{
-                    width: 30%;
-                    height: auto;
-                    display: flex;
-                    padding: 15px 12px 15px 10px;
-                    flex-direction: row;
-                    justify-content:left;
-                    align-items: center;
-                    text-decoration: none;
-                    font-family: $oxygen;
-                    font-weight: semi-bold;
-                    transition: all 0.3s ease;
-                    border-radius: 12px;
-                    margin-bottom: 20px;
-                    cursor: pointer;
-                    img{
-                        width: 35px;
+                justify-content: space-between;
+                align-items: center;
+                .wp-username{
+                    margin-right: 10px;
+                    span{
+                        text-transform: capitalize;
                     }
-                    p{
-                        margin-left: 10px;
-                        color: #fff;
-                        text-decoration: none;
-                        font-size: 20px;
-                    }
-                    &:hover{
-                        background: #f2cd3c;
-                    }
+                }
+                .wp-imgUser{
+                    width: 50px;
+                    border-radius: 50%;
                 }
             }
         }
-    }
-}
-main{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-    .wp-title{
-        padding: 15px 12px;
-        h1{
-            font-family: $oxygen;
-            font-size: 55px;
-            color: #191919;
-            font-weight: bold;
-        }
-        
-    }
-    .wp-msg{
-        padding: 15px 12px;
-        width: 100%;
-        display:flex;
-        flex-direction: row;
-        justify-content:center;
-        margin-bottom: 10px;
-        p{
-            width: 50%;
-            font-family: $lato;
-            font-weight: normal;
-            font-size: 19px;
-            text-align: center;
-            color: #191919;
-        }
-    }
-    .wp-img{
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        justify-content:center;
-        img{
-            width: 80%;
-        }
-    }
-}
-@media screen and (max-width: 450px) {
-    header{
-        .wp-bottom{
-            .nav-links{
-                nav{
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content:center;
-                    a{
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    }
-    main{
-        .wp-msg{
-            padding: 12px;
-            margin-bottom: 25px;
-            p{
-                width: 100%;
-                text-align: center;
-            }
-        }
-        .wp-img{
+        .suplant{
             width: 100%;
-            img{
-                width: 95%;
-            }
         }
     }
 }

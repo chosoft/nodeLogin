@@ -6,8 +6,8 @@ function registerValidation(obj){
         if(correo === '' || password ==='' ){
             reject('vacios')
         }else{
-            getter(correo,password).then(data => {
-                resolve(data)
+            getter(correo,password).then(id => {
+                resolve(id)
             }).catch(e => reject(e))
         }
     })
