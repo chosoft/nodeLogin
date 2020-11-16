@@ -9,380 +9,226 @@ body {
   margin: 0;
   font-family: "Oxygen", sans-serif;
   font-size: 18px;
+  background: #f2f2f2;
 }
 
-header {
-  width: 100%;
-  height: auto;
-  display: flex;
-  background: #FEDA3F;
-  flex-direction: column;
-}
-header .wp-top {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-header .wp-top nav {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 15px 12px;
-}
-header .wp-top nav .wp-profile {
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-header .wp-top nav .wp-profile img {
-  width: 45px;
-  height: 45px;
+.btnAdd {
+  bottom: 50px;
+  right: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-}
-header .wp-top nav .wp-profile span {
-  color: #fff;
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  text-transform: capitalize;
-  margin-left: 10px;
-}
-header .wp-top nav .wp-btn-menu {
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-}
-header .wp-top nav .wp-btn-menu img {
-  width: 35px;
-}
-header .wp-bottom {
-  width: 0;
-  height: auto;
-  display: none;
-  transition: all 0.3s ease;
-}
-header .wp-bottom .wp-title {
-  width: 100%;
-  height: auto;
-  padding: 15px 12px;
-  text-align: center;
-}
-header .wp-bottom .wp-title h2 {
-  color: #fff;
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  font-size: 50px;
-}
-header .wp-bottom .middle-bar {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-header .wp-bottom .middle-bar .bar {
-  height: 5px;
-  width: 80%;
-  background: #fff;
-  border-radius: 5px;
-}
-header .wp-bottom .nav-links {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-header .wp-bottom .nav-links nav {
-  width: 80%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-header .wp-bottom .nav-links nav a {
-  width: 30%;
-  height: auto;
-  display: flex;
-  padding: 15px 12px 15px 10px;
-  flex-direction: row;
-  justify-content: left;
-  align-items: center;
-  text-decoration: none;
-  font-family: "Oxygen", sans-serif;
-  font-weight: semi-bold;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-header .wp-bottom .nav-links nav a img {
-  width: 35px;
-}
-header .wp-bottom .nav-links nav a p {
-  margin-left: 10px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 20px;
-}
-header .wp-bottom .nav-links nav a:hover {
-  background: #f2cd3c;
-}
-
-.move {
-  position: fixed;
-  cursor: pointer;
-  bottom: 35px;
-  right: 35px;
-  background: #FEDA3F;
+  background: #FED83F;
+  border: 0;
   padding: 10px;
-  border: 0;
-  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
   transition: all 0.3s ease;
 }
-.move:hover {
-  background: #f2cd3c;
-}
-.move img {
-  width: 35px;
-  height: 35px;
+.btnAdd:hover {
+  background: #f7cf31;
+  transform: scale(1.1);
 }
 
-main {
+.wp-division {
   width: 100%;
   height: auto;
-  margin-top: 10px;
-}
-main #empty {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-main #empty .modelos-title {
-  width: 100%;
-  padding: 15px 12px;
-  height: auto;
-}
-main #empty .modelos-title h1 {
-  text-align: center;
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  font-size: 50px;
-  color: #191919;
-}
-main #empty .modelos-p {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-main #empty .modelos-p p {
-  width: auto;
-  height: auto;
-  font-family: "Lato", sans-serif;
-  font-size: 19px;
-  color: #191919;
-  text-align: center;
-}
-main #empty .modelos-btn {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 15px 12px;
-}
-main #empty .modelos-btn button {
-  padding: 12px 15px;
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  color: #fff;
-  font-size: 20px;
-  border: 0;
-  border-radius: 12px;
-  background: #FEDA3F;
-  transition: all 0.3s ease;
-  text-transform: capitalize;
-}
-main #empty .modelos-btn button:hover {
-  background: #f2cd3c;
-}
-main #empty .modelos-img {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-main #empty .modelos-img img {
-  width: 30%;
-}
-main .error {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-main .error .error-title {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 15px 12px;
-}
-main .error .error-title h1 {
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  text-align: center;
-  color: #191919;
-  font-size: 50px;
-}
-main .error .error-p {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-main .error .error-p p {
-  width: auto;
-  height: auto;
-  font-family: "Lato", sans-serif;
-  font-size: 19px;
-  color: #191919;
-}
-main .error .error-img {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-main .error .error-img img {
-  width: 45%;
-}
-main .title-modelos {
-  width: 100%;
-  height: auto;
-  padding: 15px 12px;
-}
-main .title-modelos h1 {
-  text-align: center;
-  color: #191919;
-  font-family: "Oxygen", sans-serif;
-  font-weight: bold;
-  font-size: 50px;
-}
-main .wp-modelos {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.wp-division aside {
+  width: 3%;
+  height: 100vh;
+  background: #282C36;
+  position: fixed;
+}
+.wp-division aside .wp-logoCl {
+  width: 100%;
+  height: 6vh;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #FED83F;
+  margin-bottom: 10px;
+}
+.wp-division aside .wp-logoCl img {
+  width: 70px;
+}
+.wp-division aside .wp-navbar {
+  width: 100%;
+  height: 86vh;
+}
+.wp-division aside .wp-navbar nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wp-division aside .wp-navbar nav a {
+  margin-bottom: 40px;
+  padding: 10px;
+}
+.wp-division aside .wp-navbar nav a img {
+  width: 35px;
+}
+.wp-division aside .wp-logout {
+  width: 100%;
+  height: 10vh;
+  background: #40434C;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wp-division aside .wp-logout a {
+  margin-top: -25px;
+}
+.wp-division aside .wp-logout a img {
+  width: 35px;
+}
+.wp-division .wp-suplied {
+  width: 3%;
+}
+.wp-division main {
+  width: 97%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.wp-division main header {
+  width: inherit;
+  height: 6vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  position: fixed;
+  background: #ffffff;
+  padding: 12px 15px;
+}
+.wp-division main header .wp-userInfo {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.wp-division main header .wp-userInfo .wp-username {
+  margin-right: 10px;
+}
+.wp-division main header .wp-userInfo .wp-username span {
+  text-transform: capitalize;
+}
+.wp-division main header .wp-userInfo .wp-imgUser img {
+  width: 50px;
+}
+.wp-division main .suplant {
+  width: 100%;
+  height: 6vh;
+}
+.wp-division main .cont {
+  width: 100%;
+  height: auto;
+}
+.wp-division main .cont .modelos {
+  width: 100%;
   padding: 50px;
 }
-main .wp-modelos .card {
-  width: 30%;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  margin-bottom: 20px;
-}
-main .wp-modelos .card .card-header {
+.wp-division main .cont .modelos .title-modelos {
   width: 100%;
   height: auto;
-  padding: 15px 12px;
-  border-bottom: 1px solid #ccc;
-}
-main .wp-modelos .card .card-header h2 {
-  font-family: "Oxygen", sans-serif;
-  color: #191919;
-  font-weight: bold;
   text-align: center;
-  font-size: 35px;
 }
-main .wp-modelos .card .card-img {
+.wp-division main .cont .modelos .title-modelos h1 {
+  font-size: 50px;
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+}
+.wp-division main .cont .modelos .modelos-p {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.wp-division main .cont .modelos .modelos-p p {
+  width: auto;
+  height: auto;
+}
+.wp-division main .cont .modelos .modelos-img {
   width: 100%;
   height: auto;
-  padding: 15px 12px;
+  padding: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-main .wp-modelos .card .card-img img {
-  width: 100%;
+.wp-division main .cont .modelos .modelos-img img {
+  width: 35%;
 }
-main .wp-modelos .card .card-btns {
+.wp-division main .cont .modelos .wp-modelos {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 12px;
-  border-top: 1px solid #ccc;
+  align-items: center;
 }
-main .wp-modelos .card .card-btns .btn {
-  width: 45%;
+.wp-division main .cont .modelos .wp-modelos .card {
+  background: #ffffff;
+  width: 30%;
+  border-radius: 12px;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-header {
+  width: 100%;
+  padding: 15px 12px;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-header h2 {
+  text-transform: capitalize;
+  text-align: left;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-img img {
+  width: 80%;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-btns {
+  width: 100%;
+  height: auto;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.wp-division main .cont .modelos .wp-modelos .card .card-btns .btn {
+  width: 49%;
+  background: #FED83F;
+  border-radius: 12px;
+  border: 0;
   padding: 12px;
-  color: #fff;
+  text-align: center;
+  text-decoration: none;
   font-family: "Oxygen", sans-serif;
   font-weight: bold;
   font-size: 22px;
-  border-radius: 12px;
-  text-align: center;
-  border: 0;
-  transition: all 0.3s ease;
+  color: #fff;
 }
-main .wp-modelos .card .card-btns a {
-  background: #FEDA3F;
-  text-decoration: none;
-}
-main .wp-modelos .card .card-btns a:hover {
-  background: #f2cd3c;
-}
-main .wp-modelos .card .card-btns .btn-delete {
-  cursor: pointer;
-  background: transparent;
+.wp-division main .cont .modelos .wp-modelos .card .card-btns .btn-delete {
+  background: none;
   color: #FE0034;
+  cursor: pointer;
 }
-
-@media screen and (max-width: 450px) {
-  header .wp-bottom .nav-links nav {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  header .wp-bottom .nav-links nav a {
-    width: 100%;
-  }
-
-  main #empty .modelos-img img {
-    width: 80%;
-  }
-  main .wp-modelos {
-    justify-content: center;
-    padding: 10px;
-  }
-  main .wp-modelos .card {
-    width: 100%;
-  }
-}
-
-/*# sourceMappingURL=modelos.css.map */

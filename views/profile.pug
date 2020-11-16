@@ -4,14 +4,23 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile
+        link(rel="stylesheet", href="/css/ballons.css")
         link(rel="stylesheet", href="/css/perfil.css")
         link(href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet")
         link(href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet")
     body
+        - var bold = '<strong>MUNCA</strong>'
         div(class="wp-division")
             include layout/navbar.pug
             main
                 include layout/barUp.pug
+                div(class="wp-welcome")
+                    div(class="wp-titleWl")
+                        h1 BIENVENIDO
+                    div(class="wp-parrafo")
+                        p Bienvenido a a la plataforma del proyeto !{bold} aqui podras encontrar todo lo relacionado a este proyecto
+                    div(class="wp-imageWl")
+                        img(src='icons/welcome.svg')
         script(src="js/jquery.min.js")
         script(src="https://unpkg.com/@popperjs/core@2")
         script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")

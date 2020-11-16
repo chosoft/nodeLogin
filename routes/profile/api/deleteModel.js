@@ -1,25 +1,19 @@
 //libraries and utils
 const express = require('express')
 const router = express.Router()
+const controller = require('./../../../controllers/modelos/deleteController')
 const session = require('express-session')
-const {auth} = require('../../../model/saver')
-//router methods
-router.get('/', (req,res,next)=>{
-    res.redirect('/')
-})
 
 router.delete('/', (req,res,next)=>{
-    //verifico si las cookies de seccion estan seteadas
-    if(req.body !== undefined && req.session.password !== undefined && req.session.correo !== undefined && req.session.user !== undefined && req.session.role !== undefined ){
-        //uso la funcion auth para 
-        const {key} = req.body
-        auth(req.session.password, req.session.correo,1,key,null,null).then(ok => {
-            res.send('ok')
-        }).catch(e => {
-            res.send('error')
-        })
+    if(req.session.idUserLogged === undefined || req.session.idUserLogged === undefined || req.session.idUserLogged ===''){
+        res.send('idNull')
     }else{
-        res.send('fail')
+        const key = req.body.key
+        controller(req.session.idUserLogged, key).then(data => {
+            res.send(data)
+        }).catch(e => {
+            res.send(e)
+        })
     }
 })
 

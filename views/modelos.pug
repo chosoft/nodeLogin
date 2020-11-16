@@ -4,27 +4,27 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile
+        link(rel="stylesheet", href="/css/ballons.css")
         link(rel="stylesheet", href="css/modelos.css")
     body
-        include layout/navbar.pug 
-        if data === null
-            button(class="move" id="add-model") 
-                img(src="icons/mas.svg", alt="mas-icon")
-        else
-            button(class="move" id="add-model") 
-                img(src="icons/mas.svg", alt="mas-icon")
-        main(id="mainCont")
-            if error
-                include layout/error.pug
-            else
-                if data === null
-                    include layout/emptyModel.pug
-                else
-                    include layout/modelos.pug
-        
+        button(class="btnAdd" id="add-model")
+            img(src="/icons/mas.svg", alt="Add-icon")
+        div(class="wp-division")
+            include layout/navbar.pug
+            main
+                include layout/barUp.pug
+                div(class="cont")
+                    if error === false
+                        if data === null
+                            include layout/emptyModel.pug
+                        else
+                            include layout/modelos.pug
+                    else
+                        include layout/error.pug
         script(src="js/jquery.min.js")
+        script(src="https://unpkg.com/@popperjs/core@2")
         script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
-        script(src="js/perfil.js")
         script(src="js/modelos.js")
+
 

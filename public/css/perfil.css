@@ -90,6 +90,7 @@ body {
   justify-content: right;
   align-items: center;
   background: #ffffff;
+  position: fixed;
   padding: 12px 15px;
 }
 .wp-division main header .wp-userInfo {
@@ -106,10 +107,42 @@ body {
 .wp-division main header .wp-userInfo .wp-username span {
   text-transform: capitalize;
 }
-.wp-division main header .wp-userInfo .wp-imgUser {
+.wp-division main header .wp-userInfo .wp-imgUser img {
   width: 50px;
   border-radius: 50%;
 }
 .wp-division main .suplant {
   width: 100%;
+  height: 6vh;
+}
+.wp-division main .wp-welcome {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+.wp-division main .wp-welcome .wp-titleWl {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.wp-division main .wp-welcome .wp-titleWl h1 {
+  font-family: "Oxygen", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+.wp-division main .wp-welcome .wp-parrafo {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.wp-division main .wp-welcome .wp-parrafo p {
+  width: auto;
+  height: auto;
+  text-align: center;
 }

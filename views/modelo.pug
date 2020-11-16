@@ -4,54 +4,57 @@ html(lang="es")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Profile
-        link(rel="stylesheet", href="css/modelos.css")
+        link(rel="stylesheet", href="/css/ballons.css")
+        link(rel="stylesheet", href="/css/modelo.css")
     body
-        include layout/navbar.pug 
 
-        main(id="mainModel")
-            section(class="title-model-wp")
-                h1= data.nombre
-            section(class="img-model-wp")
-                div(class="wp-all-img" id="changer")
-                    img(src=`${data.img}`, alt="img-model")
-                    div(class="wp-icon-changer")
-                        img(src="icons/edit.svg", alt="edit-icon")
-
-        section(class="wp-all-cont")
-            section(class="wp-datos")
-
-                div(class="card-datos" id="colegio")
-                    img(src="/icons/school.svg", alt="school-icon")
-                    span= data.colegio
-
-                div(class="card-datos" id="direccion")
-                    img(src="/icons/pin.svg", alt="pin-icon")
-                    span= data.direccion
-
-                div(class="card-datos" id="date")
-                    img(src="/icons/calendario.svg", alt="date-icon")
-                    span= data.dataRegistered
-
-                div(class="card-datos" id="creador")
-                    img(src="/icons/pluma.svg", alt="creador-icon")
-                    span= data.creator
+        div(class="wp-division")
+            include layout/navbar.pug 
+            main
+                include layout/barUp.pug
+                div(class="wp-modelo")
+                    div(class="wp-banner")
+                        h1= modeloInfo.nombre
+                    div(class="wp-dataAll")
+                        div(class="wp-imgModel")
+                            img(src=modeloInfo.img, alt="")
+                        div(class="wp-dataModel")
+                            div(class="wp-titleData")
+                                h2 Datos
+                            div(class="card-info" aria-label="Colegio" data-balloon-pos="up")
+                                div(class="wp-imgCardInfo")
+                                    img(src="/icons/school.svg", alt="")
+                                div(class="wp-text")
+                                    p= modeloInfo.colegio
+                            div(class="card-info" aria-label="Direccion" data-balloon-pos="up")
+                                div(class="wp-imgCardInfo")
+                                    img(src="/icons/pin.svg", alt="")
+                                div(class="wp-text")
+                                    p= modeloInfo.direccion
+                            div(class="card-info" aria-label="Fecha de registro" data-balloon-pos="up")
+                                div(class="wp-imgCardInfo")
+                                    img(src="/icons/calendario.svg", alt="")
+                                div(class="wp-text")
+                                    p= `${modeloInfo.dataRegistered.getDate()}-${modeloInfo.dataRegistered.getMonth()+1}-${modeloInfo.dataRegistered.getFullYear()} - ${modeloInfo.dataRegistered.getHours()}:${modeloInfo.dataRegistered.getMinutes()}`
+                            div(class="card-info" aria-label="Creador" data-balloon-pos="up")
+                                div(class="wp-imgCardInfo")
+                                    img(src="/icons/pluma.svg", alt="")
+                                div(class="wp-text")
+                                    p= modeloInfo.creador
+                        div(class="wp-lideres")
+                            div(class="wp-titleLideres")
+                                h2 Lideres
+                            each val,index in modeloInfo.lideres
+                                div(class="card-lider")
+                                    div(class="card-img")
+                                        img(src="/icons/user.svg", alt="")
+                                    div(class="wp-dataLider")
+                                        h4= val
+                                        span= modeloInfo.correos[index]
+                                        span= modeloInfo.telefonos[index]
             
-            section(class="wp-lideres")
-                each val,index in data.correos
-                    div(class="card-lider" modeloId=`${data._id}` liderCard=`${data.lideres[index]}`)
-                        div(class="wp-user-thumnail")
-                            img(src="", alt="user-thumbnail")
-                        div(class="wp-info-lider")
-                            span(class="nombre-lider")= data.lideres[index]
-                            span(class="correo-lider")= val
-                            span(class="telefono-lider")= data.telefonos[index]
-
-
-
-            
-        script(src="js/jquery.min.js")
+        script(src="/js/jquery.min.js")
         script(src="https://cdn.jsdelivr.net/npm/sweetalert2@9")
         script(src="https://unpkg.com/axios/dist/axios.min.js")
-        script(src="js/perfil.js")
-        script(src="js/modelo.js")
+        script(src="/js/modelos.js")
 

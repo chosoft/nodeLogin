@@ -17,7 +17,7 @@ const modelosSchema = new Schema({
     lideres: Array,
     telefonos: Array,
     img: {type: String, default:'/modelosImg/logo.svg'},
-    creador: String,
+    creador:{type:mongoose.ObjectId,required: true},
     dataRegistered: {type:Date,default: Date.now()}
 })
 const Modelo = mongoose.model('Modelo',modelosSchema)
@@ -98,7 +98,25 @@ function registerOrLoginAdmin(){
     })
 }
 
-
+function getUserId(id){
+    return new Promise((resolve, reject) =>{
+        if(id === undefined || id === null || id ===  ''){
+            reject('idNull')
+        }else{
+            User.findById(id, function(err, user){
+                if(err){
+                    reject(err)
+                }else{
+                    if(user === null || user === undefined || user === ''){
+                        resolve('notKnow')
+                    }else{
+                        resolve(user.user)
+                    }
+                }
+            })
+        }
+    })
+}
 //funcion para guardar usuario
 function save(data){
     return new Promise((resolve, reject) =>{
@@ -166,7 +184,7 @@ function getter(mail,password){
                     }else{
                         comparePass(password,user.password).then(dat =>{
                             if(dat === true){
-                                resolve([user._id])
+                                resolve(user._id)
                             }else{
                                 reject('!fail')
                             }
@@ -253,67 +271,28 @@ function saveModel(obj,user){
 
             resolve('ok')
         }).catch(e =>{
-            delete e
-            reject('error')
+            reject(e)
         })
     })
 }
-//funcion para autenticar y elegir accion CD De la bd
-function auth(pass,correo,mode, key=null,obj=null,user=null){
-    const creator = user
-    if(mode){
-        return new Promise((resolve, reject) =>{
-            if (pass === '' || correo ==='') {
-                console.log('a')
-                reject(false)
-            }else{
-                User.findOne({correo,password:pass},function(err,user){
-                    if(err || user === null){
-                        reject(false)
+function modelNameExists(name){
+    return new Promise((resolve, reject) =>{
+        if(name === undefined || name === null || name ===  ''){
+            reject('nameNull|')
+        }else{
+            Modelo.findOne({nombre:name},function(err,model){
+                if(err){
+                    reject(err)
+                }else{
+                    if(model === null){
+                        resolve('ok')
                     }else{
-                        if(user.role === 'admin' || user.role === 'user'){
-                            if(pass === user.password){
-                                deleteModel(key).then(ok => {
-                                    resolve('ok')
-                                }).catch(e => reject('error'))
-                            }else{
-                                
-                                reject(false)
-                            }
-                        }else{
-                            reject(false)
-                        }
+                        reject('yetExists')
                     }
-                })
-            }
-        })
-    }else{
-        return new Promise((resolve, reject) =>{
-            if (pass === '' || correo ==='') {
-                console.log('a')
-                reject(false)
-            }else{
-                User.findOne({correo,password:pass},function(err,user){
-                    if(err || user === null){
-                        reject(false)
-                    }else{
-                        if(user.role === 'admin' || user.role === 'user'){
-                            if(pass === user.password){
-                                saveModel(obj, creator).then(ok => {
-                                    resolve('ok')
-                                }).catch(e => reject('error'))
-                            }else{
-                                
-                                reject(false)
-                            }
-                        }else{
-                            reject(false)
-                        }
-                    }
-                })
-            }
-        })
-    }
+                }
+            })
+        }
+    })
 }
 //Funcion para Eliminar Modelo
 function deleteModel(key){
@@ -328,46 +307,38 @@ function deleteModel(key){
     })
 }
 
-function getModelPage(nombre,correo,password){
+function getModelData(nameModel){
     return new Promise((resolve, reject) =>{
-        permsAuth(correo,password).then(ok => {
-            if(ok){
-                Modelo.findOne({nombre}, function(err, model){
-                    if(err || model === null){
-                        reject('error')
-                    }else{
-                        resolve(model)
-                    }
-                })
-            }else{
-                delete ok
-                reject('error')
-            }
-        }).catch(e => {
-            delete e
-            reject('error')
-        })
-    })
-}
-function permsAuth(correo,password){
-    return new Promise((resolve, reject) =>{
-        if(correo === '' || password ===''){
-            reject(false)
+        if(nameModel === undefined || nameModel === null || nameModel === ''){
+            reject('modelNameNull')
         }else{
-            User.findOne({correo,password}, function(err,user){
-                if(err || user === null ){
-                    delete err
+            Modelo.findOne({nombre:nameModel},function(err,model){
+                if(err){
+                    reject(err)
                 }else{
-                    if(user.role === 'admin'||user.role === 'user'){ 
-                        delete user
-                        resolve(true)
+                    if(model === undefined || model === null || model ===  ''){
+                        reject('modelNull')
                     }else{
-                        reject(false)
+                        getUserId(model.creador).then(user => {
+                            const dataNew = {
+                                correos: model.correos,
+                                lideres: model.lideres,
+                                telefonos: model.telefonos,
+                                img: model.img,
+                                dataRegistered: model.dataRegistered,
+                                nombre: model.nombre,
+                                colegio: model.colegio,
+                                direccion: model.direccion,
+                                creador: user
+                            }
+                            resolve(dataNew)
+                        }).catch(e => reject(e))
                     }
                 }
             })
         }
     })
 }
+
 registerOrLoginAdmin()
-module.exports = {save,authId,getter,modelosGetter,saveModel,findUser,deleteModel,auth,getModelPage}
+module.exports = {save,authId,getter,modelosGetter,saveModel,modelNameExists,findUser,deleteModel,getModelData}

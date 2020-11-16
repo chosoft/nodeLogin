@@ -1,12 +1,13 @@
-div(class="title-modelos")
-    h1 Modelos
-div(class="wp-modelos" id="md")
-    each val in data
-        div(class="card" idModelo=`${val._id}`)
-            div(class="card-header")
-                h2= val.nombre
-            div(class="card-img")
-                img(src="/modelosImg/logo.svg", alt="logo-modelo", srcset="")
-            div(class="card-btns")
-                a(href=`/modelos/${val.nombre}` class="btn link-btn") Ver ahora
-                button(class="btn btn-delete" deleterKey=`${val._id}`) Eliminar
+div(class="modelos")
+    div(class="title-modelos")
+        h1 Modelos
+    div(class="wp-modelos" id="md")
+        each val in data
+            div(class="card" idModelo=`${val._id}`)
+                div(class="card-header")
+                    h2= val.nombre
+                div(class="card-img")
+                    img(src="/modelosImg/logo.svg", alt="logo-modelo", srcset="")
+                div(class="card-btns")
+                    a(href=`/modelos/${val.nombre}` class="btn link-btn") Ver ahora
+                    button(class="btn btn-delete" deleterKey=`${val._id}`) Eliminar

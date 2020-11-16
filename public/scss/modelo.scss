@@ -1,0 +1,286 @@
+$oxygen: 'Oxygen',sans-serif;
+$lato: 'Lato',sans-serif;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    padding:0;
+    margin:0;
+    font-family: $oxygen;
+    font-size: 18px;
+    background: #f2f2f2;
+}
+
+.wp-division{
+    width:100%;
+    height: auto;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    aside{
+        width: 3%;
+        height: 100vh;
+        background: #282C36;
+        position: fixed;
+        .wp-logoCl{
+            width: 100%;
+            height: 6vh;
+            padding: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            background: #FED83F;
+            margin-bottom: 10px;
+            img{
+                width: 70px;
+            }
+        }
+        .wp-navbar{
+            width: 100%;
+            height: 86vh;
+            nav{
+                width: 100%;
+                height: 100%;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                a{
+                    margin-bottom: 40px;
+                    padding: 10px;
+                    img{
+                        width: 35px;
+                    }
+                    
+                }
+
+            }
+        }
+        .wp-logout{
+            width: 100%;
+            height: 10vh;
+            background: #40434C;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items: center;
+            a{
+                margin-top: -25px;
+                img{
+                    width:35px;
+                }
+            }
+        }
+    }
+    .wp-suplied{
+        width:3%;
+    }
+    main{
+        width: 97%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        header{
+            width: inherit;
+            height: 6vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            align-items: center;
+            position: fixed;
+            background: #ffffff;
+            padding:12px 15px ;
+            .wp-userInfo{
+                width: auto;
+                height: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .wp-username{
+                    margin-right: 10px;
+                    span{
+                        text-transform: capitalize;
+                    }
+                }
+                .wp-imgUser{
+                    img{
+                        width: 50px;
+                    }
+                }
+            }
+        }
+        .suplant{
+            width: 100%;
+            height: 6vh;
+        }
+        .wp-modelo{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            .wp-banner{
+                width: 100%;
+                height: 60vh;
+                background: url('../img/bg-min.png');
+                background-position: center center;
+                display: flex;
+                background-size: cover;background-attachment: fixed;
+                flex-direction: row;
+                justify-content:center;
+                align-items: center;
+                h1{
+                    font-family: $oxygen;
+                    font-size: 65px;
+                    color: #ffffff;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+            }
+            .wp-dataAll{
+                width: 100%;
+                height:auto;
+                padding: 180px;
+                display: flex;
+                padding-top: 50px;
+                flex-direction:column;
+                .wp-imgModel{
+                    width: 100%;
+                    display: flex;
+                    flex-direction:row;
+                    justify-content:center;
+                    align-items: center;
+                    img{
+                        width:250px;
+                        height: 250px;
+                        border-radius: 50%;
+                        transition: all 0.3s ease;
+                        &:hover{
+                            padding: 5px;
+                            background: #FED83F;
+                        }
+                    }
+                }
+                .wp-dataModel{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content:space-between;
+                    align-items: center;
+                    padding: 50px;
+                    padding-top: 20px;
+                    .wp-titleData{
+                        width: 100%;
+                        height: auto;
+                        padding:15px;
+                        padding-bottom: 35px;
+                        h2{
+                            text-align: center;
+                            font-family: $oxygen;
+                            font-size: 40px;
+                            font-weight: bold;
+
+                        }
+                    }
+                    .card-info{
+                        width:40%;
+                        height: auto;
+                        display: flex;
+                        flex-direction:row;
+                        justify-content:space-between;
+                        border: 1px solid #ccc;
+                        margin-bottom: 40px;
+                        border-radius:12px;
+                        background: #fff;
+                        .wp-imgCardInfo{
+                            width:10%;
+                            height: auto;
+                            display:flex;
+                            flex-direction: row;
+                            justify-content:center;
+                            padding: 5px;
+                            align-items: center;
+                            img{
+                                width: 35px;
+                            }
+                        }
+                        .wp-text{
+                            width:90%;
+                            padding: 15px;
+                            text-transform:capitalize;
+                        }
+                    }
+                }
+                .wp-lideres{
+                    width:100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content:space-between;
+                    padding:50px;
+                    padding-top: 30px;
+                    .wp-titleLideres{
+                        width:100%;
+                        height: auto;
+                        padding: 15px;
+                        h2{
+                            text-align: center;
+                            font-family: $oxygen;
+                            font-weight: bold;
+                            font-size: 45px;
+
+                        }
+                    }
+                    .card-lider{
+                        width:40%;
+                        height: auto;
+                        background: #ffffff;border: 1px solid #ccc;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content:space-between;
+                        border-radius: 12px;
+                        .card-img{
+                            width: 25%;
+                            height: auto;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            background: #FED83F;
+                            border-top-left-radius: 12px;
+                            border-bottom-left-radius: 12px;
+                            padding:20px;
+                            img{
+                                height:100px;
+                            }
+                        }
+                        .wp-dataLider{
+                            padding: 20px;
+                            width: 75%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: left;
+                            justify-content: center;
+                            padding-top: 10px;
+                            h4{
+                                margin-bottom: 5px;
+                                font-size: 25px;
+                                text-transform: capitalize;
+                            }
+                            span{
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
